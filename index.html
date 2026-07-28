@@ -16,8 +16,8 @@
   <p>One-off campaign sends &mdash; product launches, seasonal pushes, brand moments.<br>
   Click a tab to view each campaign's visual mockup, copy, and send notes.</p>
   <div class="page-nav">
-    <a href="index.html" class="page-nav-link">Retention Flows</a>
-    <a href="hall-of-fame.html" class="page-nav-link active">Campaigns</a>
+    <a href="https://munchies-retention-emails.vercel.app/index.html" class="page-nav-link">Retention Flows</a>
+    <a href="index.html" class="page-nav-link active">Campaigns</a>
   </div>
 </div>
 
@@ -47,6 +47,11 @@
       <span class="tab-stage">Aug 7 &middot; Sale</span>
       <span class="tab-name">CBD Day Sale &mdash; The Balanced Ones</span>
       <span class="tab-offer">20% off &middot; Fri&ndash;Sun</span>
+    </div>
+    <div class="tab-btn" data-tab="pierre-lastcall" onclick="switchTab('pierre-lastcall')">
+      <span class="tab-stage">Aug 9 &middot; Sun</span>
+      <span class="tab-name">Pierre &mdash; Last Day Of The Sale</span>
+      <span class="tab-offer">Letter &middot; soft close</span>
     </div>
   </div>
   <div class="tab-bar-divider"></div>
@@ -550,14 +555,15 @@
         <div class="photo-note">DUAL-ACTION LINEUP &middot; FULL BLEED</div>
         <div class="cbd-badge revealed">
           <div class="cbd-badge-amount revealed">20%<br>OFF</div>
-          <div class="cbd-badge-lock"><strong>FRI &ndash; SUN</strong>ONLY</div>
+          <div class="cbd-badge-lock"><strong>CODE</strong>CBDEEZ</div>
         </div>
       </div>
       <div class="cbd-hero-copy">
         <div class="cbd-eyebrow">National CBD Day &middot; Tomorrow, Aug 8</div>
         <h1>Tomorrow We<br>Celebrate CBD.<br><span class="mint">The Sale<br>Starts Now.</span></h1>
         <p class="cbd-subhead">20% off the balanced ones &mdash; now through Sunday night.</p>
-        <a href="#" class="cta-btn cta-ongreen" style="margin-top:26px;">SHOP 20% OFF</a>
+        <div class="code-line">Use code <strong>CBDEEZ</strong></div>
+        <a href="#" class="cta-btn cta-ongreen">SHOP 20% OFF</a>
       </div>
     </div>
 
@@ -629,6 +635,80 @@
   </div>
 
   <div class="impl-notes"><strong>Klaviyo:</strong> Send Fri Aug 7, sale live Fri&ndash;Sun (ends Sun 11:59pm). Segment: all engaged subscribers; prioritise anyone who clicked "Set a Reminder" on the Aug 6 teaser. Discount: 20% off Euphoria Gummies + Cereal Crunchies only &mdash; scope the code to that collection so it can't be applied sitewide. Badge here is the revealed version of the teaser badge &mdash; same art, blur removed, so the payoff is visually obvious to anyone who saw Thursday's send. Consider a Sunday 6pm "ends tonight" reminder to non-purchasers.</div>
+</div>
+</div>
+
+
+<div class="tab-panel" id="tab-pierre-lastcall">
+<div class="flow-stage">
+  <div class="stage-badge">Founder Letter</div>
+  <div class="stage-title">Pierre &mdash; "Last Day of the CBD Day Sale"</div>
+  <div class="stage-meta">
+    <span style="color: #C4A478;">Text-forward &middot; soft close</span>
+    <span style="color: #888;">Send Aug 9 (Sun)</span>
+  </div>
+  <span class="type-tag letter">Letter</span>
+
+  <div class="email-header-bar">
+    <div class="row"><span class="label">Subject:</span><span class="val">A note from Pierre &mdash; last day of the CBD Day sale</span></div>
+    <div class="row"><span class="label">Preview:</span><span class="val">Why we put CBD in there in the first place. Plus, it ends tonight.</span></div>
+    <div class="row"><span class="label">Alt A:</span><span class="val">Pierre here. The sale ends at midnight.</span></div>
+    <div class="row"><span class="label">Alt B:</span><span class="val">One last note before the weekend's over</span></div>
+  </div>
+
+  <div class="email-wrapper">
+    <div class="pierre-wrap">
+
+      <div class="pierre-head">
+        <div class="pierre-brand">MUNCHIES!</div>
+        <div class="pierre-rule"></div>
+        <div class="pierre-kicker">A Letter From The Founder</div>
+      </div>
+
+      <div class="pierre-body">
+        <div class="pierre-date">Sunday, August 9, 2026</div>
+
+        <p class="pierre-lede">Hey MUNCHIES fam,</p>
+
+        <p>Pierre here. Short one today.</p>
+
+        <p>Our National CBD Day sale ends tonight at midnight, and before it does I wanted to say something about why this particular one means more to me than a normal discount.</p>
+
+        <p>When we were formulating Euphoria Gummies and Cereal Crunchies, we could have taken the easy road and loaded them with THC alone. More milligrams, a bigger number on the label, a simpler thing to sell. Plenty of companies do exactly that.</p>
+
+        <p>We put CBD in alongside it instead.</p>
+
+        <div class="pierre-pull">A good experience isn't about how hard something hits. It's about whether you'd want to do it again tomorrow.</div>
+
+        <p>That choice costs us more to make and it's harder to explain on a label. I haven't regretted it once. It's the difference between a product people try and a product people keep in the drawer.</p>
+
+        <p>If you've been meaning to give them a shot, tonight is the last night to do it at 20% off.</p>
+
+        <p>Either way &mdash; thank you for being here. It genuinely doesn't get old.</p>
+
+        <div class="pierre-ps">
+          <strong>P.S.</strong> &mdash; Use code <span class="pierre-code">CBDEEZ</span> at checkout for <strong>20% off Euphoria Gummies and Cereal Crunchies</strong>. Ends tonight at 11:59pm. <a href="#">Shop here &rarr;</a>
+        </div>
+      </div>
+
+      <div class="pierre-sign">
+        <div class="closing-line">With gratitude,</div>
+        <div class="pierre-name">Pierre</div>
+        <div class="pierre-title">Founder, MUNCHIES!</div>
+      </div>
+
+      <div class="pierre-deadline">Sale Ends Tonight &middot; 11:59 PM</div>
+
+    </div>
+
+    <div class="email-footer">
+      <div class="footer-brand">MUNCHIES!</div>
+      Delta Munchies &mdash; California Grown<br>
+      <a href="#">Unsubscribe</a> &nbsp;|&nbsp; <a href="#">Manage Preferences</a> &nbsp;|&nbsp; <a href="#">View in Browser</a>
+    </div>
+  </div>
+
+  <div class="impl-notes"><strong>Klaviyo:</strong> Send Sun Aug 9, late morning (10&ndash;11am) so it lands with a full day left to act. Segment: engaged subscribers who have <em>not</em> purchased since Friday &mdash; anyone who already bought should be suppressed or this reads badly. Send from Pierre's name and address, not the brand sender, and keep it plain-text-weighted so it lands like a letter rather than a promo. Deliberately no product cards or big CTA buttons &mdash; the only link is in the P.S. Same code as Friday's send (CBDEEZ), so no new discount setup needed.</div>
 </div>
 </div>
 
