@@ -1,29 +1,29 @@
-# One-time setup — connect this repo to Vercel
+# Connect to Vercel — 2 steps left
 
-The repo is initialised and committed on `main`. Two steps and deploys become automatic.
+Remote is already configured:
+`origin → https://github.com/oneqwerty1-design/munchies-emails.git`
 
-## 1. Push to GitHub
+## 1. Push (needs your GitHub credentials)
 
-Create an empty repo at https://github.com/new — name it `munchies-campaign-emails`,
-**don't** add a README or .gitignore (this repo already has them).
-
-Then, from inside this folder:
+From inside this folder:
 
 ```bash
-git remote add origin https://github.com/YOUR-USERNAME/munchies-campaign-emails.git
 git push -u origin main
 ```
 
-## 2. Connect it to the existing Vercel project
+If it asks for a password, GitHub wants a Personal Access Token, not your
+account password — github.com/settings/tokens → Generate new token (classic) →
+tick `repo`. Or use the GitHub CLI: `gh auth login` then push.
 
-1. Go to https://vercel.com/stepskas-2556s-projects/munchies-campaign-emails/settings/git
-2. Click **Connect Git Repository**
-3. Pick `munchies-campaign-emails`
-4. Leave build settings empty — it's static, no build step
+## 2. Connect the repo to Vercel
+
+1. https://vercel.com/stepskas-2556s-projects/munchies-campaign-emails/settings/git
+2. **Connect Git Repository** → pick `oneqwerty1-design/munchies-emails`
+3. Leave build settings empty — static site, no build step
 
 Done. Every push to `main` deploys to https://munchies-campaign-emails.vercel.app
 
-## After that
+## Then what
 
-Claude edits `index.html` / `styles.css` directly and commits. No more hand-copying
-file contents through the API, which is what broke the retention page on Jul 28.
+Claude edits `index.html` / `styles.css`, commits, pushes. Vercel handles the rest.
+No more re-uploading the whole file tree through the API.
