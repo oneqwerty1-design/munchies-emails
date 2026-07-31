@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MUNCHIES! — Loyalty Email Flows</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@700&family=Archivo+Black&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#fff;font-family:'Inter',sans-serif;min-height:100vh;padding:0 20px 40px;}
+
+.page-header{text-align:center;padding:40px 20px 20px;max-width:800px;margin:0 auto;}
+.page-header h1{font-family:'Archivo Black',sans-serif;font-size:36px;letter-spacing:2px;margin-bottom:12px;}
+.page-header p{color:#888;font-size:14px;line-height:1.6;}
+
+.page-nav{display:flex;justify-content:center;gap:4px;max-width:400px;margin:0 auto 8px;}
+.page-nav-link{padding:8px 24px;border-radius:8px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;text-decoration:none;color:#666;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);transition:all 0.2s;}
+.page-nav-link:hover{color:#fff;background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);}
+.page-nav-link.active{color:#fff;background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);}
+
+.tab-bar-wrap{position:sticky;top:0;z-index:100;background:#0a0a0a;padding:16px 0 0;margin-bottom:40px;}
+.tab-bar{display:flex;gap:4px;padding:0 16px 14px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;justify-content:center;}
+.tab-bar::-webkit-scrollbar{display:none;}
+.tab{padding:8px 14px;border-radius:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;cursor:pointer;white-space:nowrap;transition:all 0.2s;border:1px solid transparent;color:#555;background:transparent;}
+.tab:hover{color:#aaa;background:rgba(255,255,255,0.04);}
+.tab.active{color:#fff;background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.12);}
+.tab[data-tab="tier-bronze"].active{color:#cd7f32;background:rgba(205,127,50,0.1);border-color:rgba(205,127,50,0.3);}
+.tab[data-tab="tier-silver"].active{color:#c0c0c0;background:rgba(192,192,192,0.1);border-color:rgba(192,192,192,0.3);}
+.tab[data-tab="tier-gold"].active{color:#d4a017;background:rgba(212,160,23,0.1);border-color:rgba(212,160,23,0.3);}
+.tab[data-tab="expired"].active,.tab[data-tab="downgraded"].active{color:#a78bfa;background:rgba(167,139,250,0.1);border-color:rgba(167,139,250,0.3);}
+.tab-bar-divider{max-width:820px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.08);}
+
+.tab-panel{display:none;padding:20px 0 40px;max-width:500px;margin:0 auto;}
+.tab-panel.active{display:block;}
+
+.stage-badge{display:inline-block;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:10px;background:rgba(34,197,94,0.12);color:#22c55e;border:1px solid rgba(34,197,94,0.25);}
+.stage-badge.pierre{background:rgba(167,139,250,0.12);color:#a78bfa;border-color:rgba(167,139,250,0.25);}
+.stage-badge.bronze{background:rgba(205,127,50,0.12);color:#cd7f32;border-color:rgba(205,127,50,0.25);}
+.stage-badge.silver{background:rgba(192,192,192,0.12);color:#c0c0c0;border-color:rgba(192,192,192,0.25);}
+.stage-badge.gold{background:rgba(212,160,23,0.12);color:#d4a017;border-color:rgba(212,160,23,0.25);}
+.stage-badge.referral{background:rgba(236,72,153,0.12);color:#ec4899;border-color:rgba(236,72,153,0.25);}
+
+.stage-title{font-family:'Archivo Black',sans-serif;font-size:20px;color:#fff;margin-bottom:4px;}
+.stage-meta{font-size:12px;color:#666;margin-bottom:16px;}
+
+.type-tag{display:inline-block;padding:3px 10px;border-radius:6px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
+.type-tag.graphic{background:#7B2D8E;color:#fff;}
+.type-tag.text-fwd{background:#333;color:#aaa;}
+
+.email-header-bar{background:#1a1a1a;border:1px solid #333;border-radius:10px 10px 0 0;padding:14px 18px;font-size:12px;}
+.email-header-bar .row{margin-bottom:4px;display:flex;gap:6px;}
+.email-header-bar .row:last-child{margin-bottom:0;}
+.email-header-bar .label{color:#666;font-weight:700;flex-shrink:0;}
+.email-header-bar .val{color:#ccc;}
+
+.email-body{border-radius:0 0 10px 10px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.4);}
+
+.big-headline{font-family:'Archivo Black','Impact',sans-serif;text-transform:uppercase;line-height:0.95;text-align:center;letter-spacing:-1px;}
+.punchy-copy{text-align:center;font-size:15px;line-height:1.6;font-weight:500;max-width:380px;margin:0 auto;}
+.pill-cta{display:block;margin:0 auto;padding:16px 40px;border-radius:40px;font-family:'Archivo Black',sans-serif;font-size:15px;text-transform:uppercase;letter-spacing:1px;text-align:center;text-decoration:none;border:none;cursor:pointer;max-width:340px;}
+
+.e-dynamic{background:rgba(255,255,255,0.1);border:1px dashed rgba(255,255,255,0.3);border-radius:6px;padding:2px 8px;font-size:12px;color:inherit;font-family:'Courier New',monospace;display:inline;}
+.e-dynamic-dark{background:#fffbeb;border:1px dashed #d4a017;border-radius:6px;padding:2px 8px;font-size:12px;color:#92400e;font-family:'Courier New',monospace;display:inline;}
+
+/* Pierre letter styling */
+.email-wrapper-pierre{background:#ffffff;border-radius:0 0 10px 10px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.4);}
+.e-letter{padding:32px 28px 0;border-bottom:2px solid #000;}
+.e-letter .letterhead{text-align:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #eee;}
+.e-letter .letterhead h2{font-family:'Archivo Black',sans-serif;font-size:16px;color:#000;letter-spacing:2px;text-transform:uppercase;margin-bottom:2px;}
+.e-letter .letterhead .from{font-size:11px;color:#999;text-transform:uppercase;letter-spacing:1.5px;}
+.e-body-pierre{padding:0 28px 24px;}
+.e-body-pierre p{font-size:13px;color:#333;line-height:1.7;margin-bottom:12px;}
+.e-body-pierre .greeting{font-size:14px;font-weight:600;color:#000;margin-bottom:8px;}
+.e-body-pierre .signature{margin-top:20px;font-size:13px;color:#333;line-height:1.6;}
+.e-body-pierre .signature strong{display:block;font-size:14px;color:#000;}
+.e-body-pierre .signature .title-line{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px;}
+.e-body-pierre .ps{margin-top:16px;font-size:12px;color:#888;font-style:italic;border-top:1px solid #eee;padding-top:12px;}
+.e-body-pierre a{color:#7B2D8E;font-weight:700;text-decoration:underline;}
+
+.email-disclaimer{padding:20px 24px;text-align:center;font-size:9px;line-height:1.5;opacity:0.5;}
+.email-footer-brand{text-align:center;padding:20px;}
+.email-footer-brand .logo-text{font-family:'Archivo Black',sans-serif;font-size:20px;}
+.email-footer-brand .unsub{font-size:10px;opacity:0.5;margin-top:8px;}
+.email-footer-brand .unsub a{text-decoration:underline;}
+.pierre-footer{background:#f5f5f5;padding:24px 28px;text-align:center;}
+.pierre-footer p{font-size:10px;color:#999;line-height:1.6;}
+.pierre-footer .brand{font-family:'Archivo Black',sans-serif;font-size:14px;color:#333;margin-bottom:6px;}
+
+.benefit-row{display:flex;justify-content:center;gap:20px;text-align:center;padding:0 20px;}
+.benefit-item{flex:1;max-width:130px;}
+.benefit-icon{font-size:28px;margin-bottom:6px;}
+.benefit-label{font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px;}
+.benefit-detail{font-size:11px;opacity:0.7;line-height:1.3;}
+
+.perk-row{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);}
+.perk-row:last-child{border-bottom:none;}
+.perk-icon{font-size:20px;flex-shrink:0;margin-top:1px;}
+.perk-text{font-size:13px;line-height:1.5;}
+
+.impl-notes{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:16px 20px;margin-top:16px;font-size:11px;color:#666;line-height:1.7;}
+.impl-notes strong{color:#999;}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>MUNCHIES! LOYALTY EMAILS</h1>
+  <p>9 emails across 7 Klaviyo flows, triggered by Scale Loyalty events.<br>
+  Pierre emails are formal text. Everything else is graphically designed.<br>
+  Click a tab to view each email's visual mockup, copy, and Klaviyo notes.</p>
+  <div class="page-nav">
+    <a href="index.html" class="page-nav-link">Retention Flows</a>
+    <a href="hall-of-fame.html" class="page-nav-link">Campaigns</a>
+    <a href="loyalty-emails.html" class="page-nav-link active">Loyalty</a>
+  </div>
+</div>
+
+<div class="tab-bar-wrap">
+  <div class="tab-bar">
+    <div class="tab active" data-tab="overview" onclick="switchTab('overview')">Overview</div>
+    <div class="tab" data-tab="will-expire" onclick="switchTab('will-expire')">Credits Expiring</div>
+    <div class="tab" data-tab="expired" onclick="switchTab('expired')">Expired (Pierre)</div>
+    <div class="tab" data-tab="spent" onclick="switchTab('spent')">Credits Spent</div>
+    <div class="tab" data-tab="reward" onclick="switchTab('reward')">Reward Applied</div>
+    <div class="tab" data-tab="tier-bronze" onclick="switchTab('tier-bronze')">Bronze</div>
+    <div class="tab" data-tab="tier-silver" onclick="switchTab('tier-silver')">Silver</div>
+    <div class="tab" data-tab="tier-gold" onclick="switchTab('tier-gold')">Gold</div>
+    <div class="tab" data-tab="downgraded" onclick="switchTab('downgraded')">Downgraded (Pierre)</div>
+    <div class="tab" data-tab="referral" onclick="switchTab('referral')">Referral Reward</div>
+  </div>
+  <div class="tab-bar-divider"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- OVERVIEW -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="tab-panel active" id="tab-overview">
+  <div style="max-width:560px;margin:0 auto;padding:40px 0;">
+    <h2 style="font-size:20px;font-weight:800;margin-bottom:16px;">Loyalty Email System</h2>
+    <p style="font-size:13px;color:#999;line-height:1.8;margin-bottom:20px;">9 emails across 7 Klaviyo flows, triggered by Scale Loyalty (Skio) events. Customer-facing copy never references the platform — it's just "your MUNCHIES! points."</p>
+    <div style="display:grid;gap:8px;">
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;"><div><span style="font-size:12px;font-weight:700;">Credits Will Expire</span><br><span style="font-size:11px;color:#666;">Urgency nudge before expiration</span></div><span style="font-size:10px;color:#22c55e;font-weight:700;">GRAPHIC</span></div>
+      <div style="background:rgba(167,139,250,0.06);border:1px solid rgba(167,139,250,0.15);border-radius:8px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;"><div><span style="font-size:12px;font-weight:700;">Credits Expired</span><br><span style="font-size:11px;color:#666;">Pierre's formal letter of sympathy</span></div><span style="font-size:10px;color:#a78bfa;font-weight:700;">PIERRE</span></div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;"><div><span style="font-size:12px;font-weight:700;">Credits Spent</span><br><span style="font-size:11px;color:#666;">Celebration + earn more loop</span></div><span style="font-size:10px;color:#22c55e;font-weight:700;">GRAPHIC</span></div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;"><div><span style="font-size:12px;font-weight:700;">Reward Applied</span><br><span style="font-size:11px;color:#666;">Reward dropped, go use it</span></div><span style="font-size:10px;color:#22c55e;font-weight:700;">GRAPHIC</span></div>
+      <div style="background:rgba(205,127,50,0.06);border:1px solid rgba(205,127,50,0.15);border-radius:8px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;"><div><span style="font-size:12px;font-weight:700;">Tier Upgraded — Bronze</span><br><span style="font-size:11px;color:#666;">$100 spent, first tier unlocked</span></div><span style="font-size:10px;color:#cd7f32;font-weight:700;">GRAPHIC</span></div>
+      <div style="background:rgba(192,192,192,0.06);border:1px solid rgba(192,192,192,0.15);border-radius:8px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;"><div><span style="font-size:12px;font-weight:700;">Tier Upgraded — Silver</span><br><span style="font-size:11px;color:#666;">$250 spent, mid-tier upgrade</span></div><span style="font-size:10px;color:#c0c0c0;font-weight:700;">GRAPHIC</span></div>
+      <div style="background:rgba(212,160,23,0.06);border:1px solid rgba(212,160,23,0.15);border-radius:8px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;"><div><span style="font-size:12px;font-weight:700;">Tier Upgraded — Gold</span><br><span style="font-size:11px;color:#666;">$500 spent, top tier</span></div><span style="font-size:10px;color:#d4a017;font-weight:700;">GRAPHIC</span></div>
+      <div style="background:rgba(167,139,250,0.06);border:1px solid rgba(167,139,250,0.15);border-radius:8px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;"><div><span style="font-size:12px;font-weight:700;">Tier Downgraded</span><br><span style="font-size:11px;color:#666;">Pierre's letter — he's not mad, just disappointed</span></div><span style="font-size:10px;color:#a78bfa;font-weight:700;">PIERRE</span></div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;"><div><span style="font-size:12px;font-weight:700;">Referrer Reward</span><br><span style="font-size:11px;color:#666;">Friend ordered, you get paid</span></div><span style="font-size:10px;color:#ec4899;font-weight:700;">GRAPHIC</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 1. CREDITS WILL EXPIRE — GRAPHIC -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-will-expire">
+  <span class="stage-badge">Loyalty — Points</span>
+  <div class="stage-title">Credits Will Expire</div>
+  <div class="stage-meta"><span style="color:#22C55E;">Urgency nudge</span></div>
+  <span class="type-tag graphic">Graphic</span>
+
+  <div class="email-header-bar">
+    <div class="row"><span class="label">Subject:</span><span class="val">You've got MUNCHIES! points collecting dust.</span></div>
+    <div class="row"><span class="label">Preview:</span><span class="val">Use them or lose them. We'd rather you use them.</span></div>
+  </div>
+
+  <div class="email-body">
+    <!-- HERO -->
+    <div style="background: linear-gradient(180deg, #052e16 0%, #022c22 100%); padding: 44px 24px 32px; text-align: center;">
+      <div style="margin-bottom: 16px;">
+        <span style="font-family: 'Archivo Black', sans-serif; font-size: 22px; color: #22C55E; letter-spacing: 2px;">MUNCHIES!</span>
+      </div>
+      <div class="big-headline" style="font-size: 44px; color: #fff; margin-bottom: 12px;">
+        YOUR POINTS<br>HAVE AN<br>EXPIRATION<br>DATE.
+      </div>
+      <p style="font-size: 16px; color: rgba(255,255,255,0.7); font-weight: 700;">This is it.</p>
+    </div>
+
+    <!-- BODY -->
+    <div style="background: #022c22; padding: 32px 28px; text-align: center;">
+      <p class="punchy-copy" style="color: rgba(255,255,255,0.8);">
+        You've been stacking points like a responsible adult, but here's the thing — they don't last forever.
+      </p>
+    </div>
+
+    <!-- POINTS CALLOUT -->
+    <div style="background: #22C55E; padding: 28px 24px; text-align: center;">
+      <div style="font-size: 12px; color: rgba(0,0,0,0.5); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px;">Your Balance</div>
+      <div style="font-family: 'Archivo Black', sans-serif; font-size: 36px; color: #000;"><span class="e-dynamic-dark">{{ event.PointsBalance }}</span> points</div>
+      <div style="font-size: 13px; color: rgba(0,0,0,0.6); font-weight: 600; margin-top: 6px;">Expires <span class="e-dynamic-dark">{{ event.ExpirationDate }}</span></div>
+    </div>
+
+    <!-- COPY -->
+    <div style="background: #022c22; padding: 28px 28px; text-align: center;">
+      <p class="punchy-copy" style="color: rgba(255,255,255,0.75); font-size: 14px;">
+        That's real money toward your next order. If you don't use them by the date above, they disappear. Not to be dramatic, but… they disappear.
+      </p>
+    </div>
+
+    <!-- CTA -->
+    <div style="background: #022c22; padding: 0 24px 32px; text-align: center;">
+      <a href="#" class="pill-cta" style="background: #22C55E; color: #000;">Redeem Your Points</a>
+    </div>
+
+    <!-- BOTTOM NOTE -->
+    <div style="background: rgba(34,197,94,0.08); padding: 24px; text-align: center; border-top: 1px solid rgba(34,197,94,0.2);">
+      <p style="font-size: 13px; color: rgba(255,255,255,0.5); max-width: 340px; margin: 0 auto;">Not sure what to grab? Your points work on everything — gummies, vapes, the whole menu. Pick your favorite and thank Past You for earning them.</p>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="background: #021a13; padding: 24px;">
+      <div class="email-disclaimer" style="color: rgba(255,255,255,0.25);">ALL PRODUCTS CONTAIN .3% THC DELTA-9 OR LESS. PRODUCTS SOLD BY DELTA MUNCHIES ARE NOT INTENDED TO DIAGNOSE, TREAT, CURE OR PREVENT ANY DISEASE.</div>
+      <div class="email-footer-brand">
+        <div class="logo-text" style="color: #22C55E;">MUNCHIES!</div>
+        <div class="unsub" style="color: rgba(255,255,255,0.25);"><a href="#" style="color: rgba(255,255,255,0.35);">Update preferences</a> &middot; <a href="#" style="color: rgba(255,255,255,0.35);">Unsubscribe</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="impl-notes"><strong>Klaviyo:</strong> Send 7 days before expiration. Exclude anyone who's placed an order in the last 3 days. Dynamic: PointsBalance, ExpirationDate.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 2. CREDITS EXPIRED — PIERRE (TEXT) -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-expired">
+  <span class="stage-badge pierre">From the Desk of Pierre</span>
+  <div class="stage-title">Credits Expired</div>
+  <div class="stage-meta"><span style="color:#a78bfa;">Formal letter</span></div>
+  <span class="type-tag text-fwd">Text-Forward</span>
+
+  <div class="email-header-bar">
+    <div class="row"><span class="label">Subject:</span><span class="val">A formal letter regarding your points.</span></div>
+    <div class="row"><span class="label">Preview:</span><span class="val">Pierre has something he needs to get off his chest.</span></div>
+  </div>
+
+  <div class="email-wrapper-pierre">
+    <div class="e-letter">
+      <div class="letterhead">
+        <h2>Official Correspondence</h2>
+        <div class="from">From the Desk of Pierre &middot; Chief Vibes Officer</div>
+      </div>
+    </div>
+    <div class="e-body-pierre" style="padding-top:24px;">
+      <p class="greeting">Dear Valued MUNCHIES! Customer,</p>
+      <p>It is with a heavy heart and an even heavier gummy pouch that I write to you today.</p>
+      <p>After careful review of the records, I regret to inform you that your <span class="e-dynamic-dark">{{ event.ExpiredPoints }}</span> loyalty points have… expired. I wish I had better news. I rehearsed several ways to say this and none of them felt right.</p>
+      <p><span class="e-dynamic-dark">{{ event.ExpiredValue }}</span> in potential savings, gone. Like a gummy left on a hot dashboard. I'm not going to pretend this doesn't sting.</p>
+      <p>However — and I need you to hear me on this — I have full confidence in your ability to recover. You earned those points once. You can earn them again. Every dollar you spend with us puts new points in your account, and I will personally be watching them accumulate with great pride.</p>
+      <p>Consider this a fresh start. A new chapter. The scoreboard is reset, but the player remains elite.</p>
+      <p style="margin-top: 20px;">When you're ready: <a href="#">deltamunchies.com</a></p>
+    </div>
+    <div style="height: 1px; background: #eee; margin: 0 28px;"></div>
+    <div class="e-body-pierre">
+      <div class="signature">
+        <p>With my deepest sympathies and unwavering confidence,</p>
+        <strong>Pierre</strong>
+        <span class="title-line">Chief Vibes Officer, MUNCHIES!</span>
+      </div>
+      <p class="ps">P.S. — I believe in you. Now go earn some points before I write another letter.</p>
+    </div>
+    <div class="pierre-footer">
+      <p class="brand">MUNCHIES!</p>
+      <p>&copy; 2026 Delta Munchies. All rights reserved.<br><a href="#" style="color:#999;">Unsubscribe</a> &middot; <a href="#" style="color:#999;">Manage Preferences</a></p>
+    </div>
+  </div>
+  <div class="impl-notes"><strong>Klaviyo:</strong> Dynamic: ExpiredPoints, ExpiredValue. Check Skio passes dollar value — if not, remove that reference. Pierre = brand character. <em>Formal text email — no graphic design. Relies on copy and tone only.</em></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 3. CREDITS SPENT — GRAPHIC -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-spent">
+  <span class="stage-badge">Loyalty — Points</span>
+  <div class="stage-title">Credits Spent</div>
+  <div class="stage-meta"><span style="color:#22C55E;">Celebration + earn-more loop</span></div>
+  <span class="type-tag graphic">Graphic</span>
+
+  <div class="email-header-bar">
+    <div class="row"><span class="label">Subject:</span><span class="val">Points well spent.</span></div>
+    <div class="row"><span class="label">Preview:</span><span class="val">You just saved real money. Here's your receipt.</span></div>
+  </div>
+
+  <div class="email-body">
+    <!-- HERO -->
+    <div style="background: linear-gradient(180deg, #052e16 0%, #022c22 100%); padding: 44px 24px 32px; text-align: center;">
+      <div style="margin-bottom: 16px;">
+        <span style="font-family: 'Archivo Black', sans-serif; font-size: 22px; color: #22C55E; letter-spacing: 2px;">MUNCHIES!</span>
+      </div>
+      <div class="big-headline" style="font-size: 42px; color: #fff; margin-bottom: 12px;">
+        POINTS<br>WELL SPENT.
+      </div>
+      <p style="font-size: 15px; color: rgba(255,255,255,0.6); font-weight: 600;">Look at you, spending points like a pro.</p>
+    </div>
+
+    <!-- SAVINGS CALLOUT -->
+    <div style="background: #22C55E; padding: 24px; text-align: center;">
+      <div style="display: flex; justify-content: center; gap: 32px;">
+        <div>
+          <div style="font-size: 11px; color: rgba(0,0,0,0.5); font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px;">Redeemed</div>
+          <div style="font-family: 'Archivo Black', sans-serif; font-size: 24px; color: #000;"><span class="e-dynamic-dark">{{ event.PointsSpent }}</span> pts</div>
+        </div>
+        <div>
+          <div style="font-size: 11px; color: rgba(0,0,0,0.5); font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px;">You Saved</div>
+          <div style="font-family: 'Archivo Black', sans-serif; font-size: 24px; color: #000;"><span class="e-dynamic-dark">{{ event.DiscountAmount }}</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BODY -->
+    <div style="background: #022c22; padding: 28px 28px; text-align: center;">
+      <p class="punchy-copy" style="color: rgba(255,255,255,0.8); font-size: 14px;">
+        That's literally free money you earned by being a customer. Not bad for doing something you were going to do anyway.
+      </p>
+      <div style="margin-top: 20px; display: inline-block; border: 2px dashed rgba(34,197,94,0.3); border-radius: 10px; padding: 10px 24px;">
+        <div style="font-size: 10px; color: rgba(255,255,255,0.4); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 2px;">Remaining Balance</div>
+        <div style="font-family: 'Archivo Black', sans-serif; font-size: 20px; color: #22C55E;"><span class="e-dynamic">{{ event.RemainingBalance }}</span></div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="background: #022c22; padding: 8px 24px 32px; text-align: center;">
+      <a href="#" class="pill-cta" style="background: #22C55E; color: #000;">See What's New</a>
+    </div>
+
+    <!-- BOTTOM NOTE -->
+    <div style="background: rgba(34,197,94,0.08); padding: 24px; text-align: center; border-top: 1px solid rgba(34,197,94,0.2);">
+      <p style="font-size: 13px; color: rgba(255,255,255,0.5); max-width: 340px; margin: 0 auto;">The best part? You're earning points on this order too. It never stops.</p>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="background: #021a13; padding: 24px;">
+      <div class="email-disclaimer" style="color: rgba(255,255,255,0.25);">ALL PRODUCTS CONTAIN .3% THC DELTA-9 OR LESS. PRODUCTS SOLD BY DELTA MUNCHIES ARE NOT INTENDED TO DIAGNOSE, TREAT, CURE OR PREVENT ANY DISEASE.</div>
+      <div class="email-footer-brand">
+        <div class="logo-text" style="color: #22C55E;">MUNCHIES!</div>
+        <div class="unsub" style="color: rgba(255,255,255,0.25);"><a href="#" style="color: rgba(255,255,255,0.35);">Update preferences</a> &middot; <a href="#" style="color: rgba(255,255,255,0.35);">Unsubscribe</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="impl-notes"><strong>Klaviyo:</strong> Dynamic: PointsSpent, DiscountAmount, RemainingBalance. Verify exact Skio property names. Keep short — confirmation, not sales pitch.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 4. REWARD APPLIED — GRAPHIC -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-reward">
+  <span class="stage-badge">Loyalty — Reward</span>
+  <div class="stage-title">Loyalty Reward Applied</div>
+  <div class="stage-meta"><span style="color:#3B82F6;">Reward dropped, go use it</span></div>
+  <span class="type-tag graphic">Graphic</span>
+
+  <div class="email-header-bar">
+    <div class="row"><span class="label">Subject:</span><span class="val">A reward just hit your account.</span></div>
+    <div class="row"><span class="label">Preview:</span><span class="val">We dropped something in your wallet. Go check.</span></div>
+  </div>
+
+  <div class="email-body">
+    <!-- HERO -->
+    <div style="background: linear-gradient(180deg, #1e3a5f 0%, #0f1f3a 100%); padding: 44px 24px 32px; text-align: center;">
+      <div style="margin-bottom: 16px;">
+        <span style="font-family: 'Archivo Black', sans-serif; font-size: 22px; color: #60A5FA; letter-spacing: 2px;">MUNCHIES!</span>
+      </div>
+      <div class="big-headline" style="font-size: 42px; color: #fff; margin-bottom: 12px;">
+        YOU JUST<br>UNLOCKED<br>A REWARD.
+      </div>
+      <p style="font-size: 15px; color: rgba(255,255,255,0.6); font-weight: 600;">Use it before you forget.</p>
+    </div>
+
+    <!-- REWARD CALLOUT -->
+    <div style="background: #3B82F6; padding: 28px 24px; text-align: center;">
+      <div style="font-size: 12px; color: rgba(255,255,255,0.6); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px;">Your Reward</div>
+      <div style="font-family: 'Archivo Black', sans-serif; font-size: 28px; color: #fff;"><span class="e-dynamic">{{ event.RewardDescription }}</span></div>
+      <div style="font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 600; margin-top: 6px;">Auto-applied at checkout. No code needed.</div>
+    </div>
+
+    <!-- BODY -->
+    <div style="background: #0f1f3a; padding: 28px 28px; text-align: center;">
+      <p class="punchy-copy" style="color: rgba(255,255,255,0.8); font-size: 14px;">
+        Being loyal has its perks — and yours just showed up. No hoops to jump through. No minimum spend. Just add what you want to your cart and the reward applies automatically.
+      </p>
+    </div>
+
+    <!-- CTA -->
+    <div style="background: #0f1f3a; padding: 0 24px 32px; text-align: center;">
+      <a href="#" class="pill-cta" style="background: #60A5FA; color: #000;">Shop With Your Reward</a>
+    </div>
+
+    <!-- BOTTOM NOTE -->
+    <div style="background: rgba(59,130,246,0.08); padding: 24px; text-align: center; border-top: 1px solid rgba(59,130,246,0.2);">
+      <p style="font-size: 13px; color: rgba(255,255,255,0.5); max-width: 340px; margin: 0 auto;">Fun fact: the more you order, the better the rewards get. This is just the beginning.</p>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="background: #0a1428; padding: 24px;">
+      <div class="email-disclaimer" style="color: rgba(255,255,255,0.25);">ALL PRODUCTS CONTAIN .3% THC DELTA-9 OR LESS. PRODUCTS SOLD BY DELTA MUNCHIES ARE NOT INTENDED TO DIAGNOSE, TREAT, CURE OR PREVENT ANY DISEASE.</div>
+      <div class="email-footer-brand">
+        <div class="logo-text" style="color: #60A5FA;">MUNCHIES!</div>
+        <div class="unsub" style="color: rgba(255,255,255,0.25);"><a href="#" style="color: rgba(255,255,255,0.35);">Update preferences</a> &middot; <a href="#" style="color: rgba(255,255,255,0.35);">Unsubscribe</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="impl-notes"><strong>Klaviyo:</strong> Dynamic: RewardDescription. If Skio only passes a discount code, adjust copy to include the code with redemption instructions.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 5A. TIER — BRONZE — GRAPHIC -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-tier-bronze">
+  <span class="stage-badge bronze">Tier Upgrade — Bronze</span>
+  <div class="stage-title">Welcome to Bronze</div>
+  <div class="stage-meta"><span style="color:#cd7f32;">$100 spent</span></div>
+  <span class="type-tag graphic">Graphic</span>
+
+  <div class="email-header-bar">
+    <div class="row"><span class="label">Subject:</span><span class="val">You just got promoted.</span></div>
+    <div class="row"><span class="label">Preview:</span><span class="val">Welcome to Bronze. The perks start now.</span></div>
+  </div>
+
+  <div class="email-body">
+    <!-- HERO -->
+    <div style="background: linear-gradient(180deg, #44270e 0%, #2a1808 100%); padding: 44px 24px 32px; text-align: center;">
+      <div style="margin-bottom: 16px;">
+        <span style="font-family: 'Archivo Black', sans-serif; font-size: 22px; color: #cd7f32; letter-spacing: 2px;">MUNCHIES!</span>
+      </div>
+      <div class="big-headline" style="font-size: 44px; color: #fff; margin-bottom: 10px;">
+        WELCOME<br>TO BRONZE.
+      </div>
+      <p style="font-size: 16px; color: rgba(255,255,255,0.6); font-weight: 600;">You're officially in.</p>
+      <div style="margin-top: 16px; display: inline-block; background: rgba(205,127,50,0.2); border: 1px solid rgba(205,127,50,0.4); border-radius: 20px; padding: 6px 20px; font-size: 11px; font-weight: 800; color: #cd7f32; text-transform: uppercase; letter-spacing: 1.5px;">$100 spent with MUNCHIES!</div>
+    </div>
+
+    <!-- BODY -->
+    <div style="background: #2a1808; padding: 28px 28px; text-align: center;">
+      <p class="punchy-copy" style="color: rgba(255,255,255,0.8); font-size: 14px;">
+        You've spent $100 with MUNCHIES! and that just unlocked your first set of loyalty perks. This is where it starts getting good.
+      </p>
+    </div>
+
+    <!-- PERKS -->
+    <div style="background: #cd7f32; padding: 28px 24px; text-align: center;">
+      <div style="font-family: 'Archivo Black', sans-serif; font-size: 18px; color: #2a1808; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">Your Bronze Perks</div>
+      <div class="benefit-row">
+        <div class="benefit-item">
+          <div class="benefit-icon">&#x1F3C6;</div>
+          <div class="benefit-label" style="color: #2a1808;">Points</div>
+          <div class="benefit-detail" style="color: rgba(42,24,8,0.7);">On every single order</div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">&#x1F3AF;</div>
+          <div class="benefit-label" style="color: #2a1808;">Early Access</div>
+          <div class="benefit-detail" style="color: rgba(42,24,8,0.7);">New flavors before everyone</div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">&#x1F382;</div>
+          <div class="benefit-label" style="color: #2a1808;">Birthday</div>
+          <div class="benefit-detail" style="color: rgba(42,24,8,0.7);">Better than a text from your ex</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="background: #2a1808; padding: 28px 24px; text-align: center;">
+      <a href="#" class="pill-cta" style="background: #cd7f32; color: #2a1808;">See Your Perks</a>
+    </div>
+
+    <!-- NEXT TIER -->
+    <div style="background: rgba(205,127,50,0.08); padding: 24px; text-align: center; border-top: 1px solid rgba(205,127,50,0.2);">
+      <p style="font-size: 13px; color: rgba(255,255,255,0.5); max-width: 340px; margin: 0 auto;">This is just the first tier. Silver unlocks at $250 and Gold at $500 — and the perks get significantly better. Keep ordering.</p>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="background: #1a0f06; padding: 24px;">
+      <div class="email-disclaimer" style="color: rgba(255,255,255,0.25);">ALL PRODUCTS CONTAIN .3% THC DELTA-9 OR LESS. PRODUCTS SOLD BY DELTA MUNCHIES ARE NOT INTENDED TO DIAGNOSE, TREAT, CURE OR PREVENT ANY DISEASE.</div>
+      <div class="email-footer-brand">
+        <div class="logo-text" style="color: #cd7f32;">MUNCHIES!</div>
+        <div class="unsub" style="color: rgba(255,255,255,0.25);"><a href="#" style="color: rgba(255,255,255,0.35);">Update preferences</a> &middot; <a href="#" style="color: rgba(255,255,255,0.35);">Unsubscribe</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="impl-notes"><strong>Klaviyo:</strong> Branch split on tier name = Bronze. No dynamic variables — all hardcoded.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 5B. TIER — SILVER — GRAPHIC -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-tier-silver">
+  <span class="stage-badge silver">Tier Upgrade — Silver</span>
+  <div class="stage-title">Welcome to Silver</div>
+  <div class="stage-meta"><span style="color:#c0c0c0;">$250 spent</span></div>
+  <span class="type-tag graphic">Graphic</span>
+
+  <div class="email-header-bar">
+    <div class="row"><span class="label">Subject:</span><span class="val">You just got promoted.</span></div>
+    <div class="row"><span class="label">Preview:</span><span class="val">Welcome to Silver. Things just got unfair (in your favor).</span></div>
+  </div>
+
+  <div class="email-body">
+    <!-- HERO -->
+    <div style="background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%); padding: 44px 24px 32px; text-align: center;">
+      <div style="margin-bottom: 16px;">
+        <span style="font-family: 'Archivo Black', sans-serif; font-size: 22px; color: #c0c0c0; letter-spacing: 2px;">MUNCHIES!</span>
+      </div>
+      <div class="big-headline" style="font-size: 42px; color: #fff; margin-bottom: 10px;">
+        WELCOME<br>TO SILVER.
+      </div>
+      <p style="font-size: 16px; color: rgba(255,255,255,0.6); font-weight: 600;">Things just got unfair.</p>
+      <div style="margin-top: 16px; display: inline-block; background: rgba(192,192,192,0.15); border: 1px solid rgba(192,192,192,0.35); border-radius: 20px; padding: 6px 20px; font-size: 11px; font-weight: 800; color: #c0c0c0; text-transform: uppercase; letter-spacing: 1.5px;">$250 spent with MUNCHIES!</div>
+    </div>
+
+    <!-- BODY -->
+    <div style="background: #1a1a1a; padding: 28px 28px; text-align: center;">
+      <p class="punchy-copy" style="color: rgba(255,255,255,0.8); font-size: 14px;">
+        Silver isn't just a nicer name — it comes with perks that Bronze doesn't get.
+      </p>
+    </div>
+
+    <!-- PERKS -->
+    <div style="background: linear-gradient(135deg, #c0c0c0, #e8e8e8); padding: 28px 24px;">
+      <div style="font-family: 'Archivo Black', sans-serif; font-size: 18px; color: #1a1a1a; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; text-align: center;">Your Silver Perks</div>
+      <div style="max-width: 340px; margin: 0 auto;">
+        <div class="perk-row" style="border-color: rgba(0,0,0,0.1);"><span class="perk-icon">&#x2705;</span><span class="perk-text" style="color: #333;">Everything you had in Bronze, plus:</span></div>
+        <div class="perk-row" style="border-color: rgba(0,0,0,0.1);"><span class="perk-icon">&#x26A1;</span><span class="perk-text" style="color: #333;">Bonus point multiplier — you earn faster now</span></div>
+        <div class="perk-row" style="border-color: rgba(0,0,0,0.1);"><span class="perk-icon">&#x1F4E6;</span><span class="perk-text" style="color: #333;">Free shipping on select orders</span></div>
+        <div class="perk-row" style="border-color: transparent;"><span class="perk-icon">&#x1F60F;</span><span class="perk-text" style="color: #333;">The smug satisfaction of being above average</span></div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="background: #1a1a1a; padding: 28px 24px; text-align: center;">
+      <a href="#" class="pill-cta" style="background: #c0c0c0; color: #1a1a1a;">See Your Perks</a>
+    </div>
+
+    <!-- NEXT TIER -->
+    <div style="background: rgba(192,192,192,0.06); padding: 24px; text-align: center; border-top: 1px solid rgba(192,192,192,0.15);">
+      <p style="font-size: 13px; color: rgba(255,255,255,0.5); max-width: 340px; margin: 0 auto;">One more tier to go. Gold unlocks at $500 — double points, first access to limited drops, and rewards most people don't even know exist.</p>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="background: #111; padding: 24px;">
+      <div class="email-disclaimer" style="color: rgba(255,255,255,0.25);">ALL PRODUCTS CONTAIN .3% THC DELTA-9 OR LESS. PRODUCTS SOLD BY DELTA MUNCHIES ARE NOT INTENDED TO DIAGNOSE, TREAT, CURE OR PREVENT ANY DISEASE.</div>
+      <div class="email-footer-brand">
+        <div class="logo-text" style="color: #c0c0c0;">MUNCHIES!</div>
+        <div class="unsub" style="color: rgba(255,255,255,0.25);"><a href="#" style="color: rgba(255,255,255,0.35);">Update preferences</a> &middot; <a href="#" style="color: rgba(255,255,255,0.35);">Unsubscribe</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="impl-notes"><strong>Klaviyo:</strong> Branch split on tier name = Silver. No dynamic variables.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 5C. TIER — GOLD — GRAPHIC -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-tier-gold">
+  <span class="stage-badge gold">Tier Upgrade — Gold</span>
+  <div class="stage-title">Welcome to Gold</div>
+  <div class="stage-meta"><span style="color:#d4a017;">$500 spent — the top</span></div>
+  <span class="type-tag graphic">Graphic</span>
+
+  <div class="email-header-bar">
+    <div class="row"><span class="label">Subject:</span><span class="val">You just hit Gold. This is the top.</span></div>
+    <div class="row"><span class="label">Preview:</span><span class="val">The highest tier. The best perks. You earned every one of them.</span></div>
+  </div>
+
+  <div class="email-body">
+    <!-- HERO -->
+    <div style="background: linear-gradient(180deg, #3d2e0a 0%, #1a1400 100%); padding: 44px 24px 32px; text-align: center; position: relative; overflow: hidden;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, transparent, #d4a017, #F5D67B, #d4a017, transparent);"></div>
+      <div style="margin-bottom: 16px;">
+        <span style="font-family: 'Archivo Black', sans-serif; font-size: 22px; color: #d4a017; letter-spacing: 2px;">MUNCHIES!</span>
+      </div>
+      <div class="big-headline" style="font-size: 48px; color: #fff; margin-bottom: 10px;">
+        WELCOME<br>TO GOLD.
+      </div>
+      <p style="font-size: 16px; color: rgba(255,255,255,0.6); font-weight: 600;">You're basically family now.</p>
+      <div style="margin-top: 16px; display: inline-block; background: rgba(212,160,23,0.2); border: 1px solid rgba(212,160,23,0.4); border-radius: 20px; padding: 6px 20px; font-size: 11px; font-weight: 800; color: #d4a017; text-transform: uppercase; letter-spacing: 1.5px;">$500 spent with MUNCHIES!</div>
+    </div>
+
+    <!-- BODY -->
+    <div style="background: #1a1400; padding: 28px 28px; text-align: center;">
+      <p class="punchy-copy" style="color: rgba(255,255,255,0.8); font-size: 14px;">
+        There's no tier above this. Gold is the top. You've earned every perk we have to give.
+      </p>
+    </div>
+
+    <!-- PERKS -->
+    <div style="background: linear-gradient(135deg, #d4a017, #F5D67B); padding: 28px 24px;">
+      <div style="font-family: 'Archivo Black', sans-serif; font-size: 18px; color: #1a1400; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; text-align: center;">Your Gold Perks</div>
+      <div style="max-width: 340px; margin: 0 auto;">
+        <div class="perk-row" style="border-color: rgba(0,0,0,0.1);"><span class="perk-icon">&#x2705;</span><span class="perk-text" style="color: #2a1f00;">Everything in Bronze and Silver, plus:</span></div>
+        <div class="perk-row" style="border-color: rgba(0,0,0,0.1);"><span class="perk-icon">&#x1F48E;</span><span class="perk-text" style="color: #2a1f00;">Double points on every single order</span></div>
+        <div class="perk-row" style="border-color: rgba(0,0,0,0.1);"><span class="perk-icon">&#x1F525;</span><span class="perk-text" style="color: #2a1f00;">First access to limited drops before anyone else</span></div>
+        <div class="perk-row" style="border-color: rgba(0,0,0,0.1);"><span class="perk-icon">&#x1F381;</span><span class="perk-text" style="color: #2a1f00;">Exclusive rewards most customers don't even know exist</span></div>
+        <div class="perk-row" style="border-color: transparent;"><span class="perk-icon">&#x1F451;</span><span class="perk-text" style="color: #2a1f00;">You're basically family at this point</span></div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="background: #1a1400; padding: 28px 24px; text-align: center;">
+      <a href="#" class="pill-cta" style="background: #d4a017; color: #1a1400;">See Your Perks</a>
+    </div>
+
+    <!-- BOTTOM NOTE -->
+    <div style="background: rgba(212,160,23,0.06); padding: 24px; text-align: center; border-top: 1px solid rgba(212,160,23,0.15);">
+      <p style="font-size: 13px; color: rgba(255,255,255,0.5); max-width: 340px; margin: 0 auto;">There's no tier above Gold. You're at the top. Every order you place from here earns double points — the rich get richer.</p>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="background: #0f0d00; padding: 24px;">
+      <div style="height: 1px; background: linear-gradient(90deg, transparent, rgba(212,160,23,0.3), transparent); margin-bottom: 16px;"></div>
+      <div class="email-disclaimer" style="color: rgba(255,255,255,0.25);">ALL PRODUCTS CONTAIN .3% THC DELTA-9 OR LESS. PRODUCTS SOLD BY DELTA MUNCHIES ARE NOT INTENDED TO DIAGNOSE, TREAT, CURE OR PREVENT ANY DISEASE.</div>
+      <div class="email-footer-brand">
+        <div class="logo-text" style="color: #d4a017;">MUNCHIES!</div>
+        <div class="unsub" style="color: rgba(255,255,255,0.25);"><a href="#" style="color: rgba(255,255,255,0.35);">Update preferences</a> &middot; <a href="#" style="color: rgba(255,255,255,0.35);">Unsubscribe</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="impl-notes"><strong>Klaviyo:</strong> Branch split on tier name = Gold. No dynamic variables. This should be the most polished email in the account — premium feel.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 6. TIER DOWNGRADED — PIERRE (TEXT) -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-downgraded">
+  <span class="stage-badge pierre">From the Desk of Pierre</span>
+  <div class="stage-title">Tier Downgraded</div>
+  <div class="stage-meta"><span style="color:#a78bfa;">Formal letter</span></div>
+  <span class="type-tag text-fwd">Text-Forward</span>
+
+  <div class="email-header-bar">
+    <div class="row"><span class="label">Subject:</span><span class="val">A letter from Pierre. He's not mad. Just disappointed.</span></div>
+    <div class="row"><span class="label">Preview:</span><span class="val">Pierre sat down, poured himself a drink, and wrote you this.</span></div>
+  </div>
+
+  <div class="email-wrapper-pierre">
+    <div class="e-letter">
+      <div class="letterhead">
+        <h2>Official Correspondence</h2>
+        <div class="from">From the Desk of Pierre &middot; Chief Vibes Officer</div>
+      </div>
+    </div>
+    <div class="e-body-pierre" style="padding-top:24px;">
+      <p class="greeting">Dear <span class="e-dynamic-dark">{{ person.first_name }}</span>,</p>
+      <p>I'll be honest with you. Writing this letter was not easy.</p>
+      <p>I paced around the office for a while. I looked out the window. I considered not sending this at all. But you deserve the truth, delivered with dignity.</p>
+      <p>Your MUNCHIES! status has moved from <span class="e-dynamic-dark">{{ event.PreviousTier }}</span> to <span class="e-dynamic-dark">{{ event.NewTier }}</span>. I know. I know. Take a moment if you need one.</p>
+      <p>Let me be clear: I am not mad. I am not even disappointed. I am simply… aware. Life gets busy. Snack drawers get neglected. These things happen to the best of us.</p>
+      <p>But here's what I need you to understand — your points are still there. Your account is still here. And the path back to <span class="e-dynamic-dark">{{ event.PreviousTier }}</span> is shorter than you think. One or two orders and you're right back where you belong.</p>
+      <p>I've seen comebacks before. I've seen people fall to Bronze and claw their way back to Gold with the determination of someone who knows what good perks taste like. I believe you have that same fire.</p>
+      <p style="margin-top: 20px;">When you're ready: <a href="#">deltamunchies.com</a></p>
+    </div>
+    <div style="height: 1px; background: #eee; margin: 0 28px;"></div>
+    <div class="e-body-pierre">
+      <div class="signature">
+        <p>With my deepest sympathies and a hand extended in partnership,</p>
+        <strong>Pierre</strong>
+        <span class="title-line">Chief Vibes Officer, MUNCHIES!</span>
+      </div>
+      <p class="ps">P.S. — <span class="e-dynamic-dark">{{ event.PreviousTier }}</span> had some really solid perks. I'd hate for you to miss them any longer than you have to.</p>
+    </div>
+    <div class="pierre-footer">
+      <p class="brand">MUNCHIES!</p>
+      <p>&copy; 2026 Delta Munchies. All rights reserved.<br><a href="#" style="color:#999;">Unsubscribe</a> &middot; <a href="#" style="color:#999;">Manage Preferences</a></p>
+    </div>
+  </div>
+  <div class="impl-notes"><strong>Klaviyo:</strong> Dynamic: PreviousTier, NewTier, person.first_name. Never punitive tone. Suppress if customer hasn't opened an email in 90+ days. <em>Formal text email — no graphic design. Relies on copy and tone only.</em></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 7. REFERRAL REWARD — GRAPHIC -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-referral">
+  <span class="stage-badge referral">Loyalty — Referral</span>
+  <div class="stage-title">Referrer Reward Generated</div>
+  <div class="stage-meta"><span style="color:#EC4899;">Friend ordered, you get paid</span></div>
+  <span class="type-tag graphic">Graphic</span>
+
+  <div class="email-header-bar">
+    <div class="row"><span class="label">Subject:</span><span class="val">Someone used your referral. You both win.</span></div>
+    <div class="row"><span class="label">Preview:</span><span class="val">Your friend ordered. Your reward is waiting. Everybody eats.</span></div>
+  </div>
+
+  <div class="email-body">
+    <!-- HERO -->
+    <div style="background: linear-gradient(180deg, #831843 0%, #500724 100%); padding: 44px 24px 32px; text-align: center;">
+      <div style="margin-bottom: 16px;">
+        <span style="font-family: 'Archivo Black', sans-serif; font-size: 22px; color: #F472B6; letter-spacing: 2px;">MUNCHIES!</span>
+      </div>
+      <div class="big-headline" style="font-size: 40px; color: #fff; margin-bottom: 12px;">
+        YOUR FRIEND<br>TOOK THE<br>BAIT.
+      </div>
+      <p style="font-size: 16px; color: rgba(255,255,255,0.6); font-weight: 600;">Here's your cut.</p>
+    </div>
+
+    <!-- REWARD CALLOUT -->
+    <div style="background: #EC4899; padding: 28px 24px; text-align: center;">
+      <div style="font-size: 12px; color: rgba(255,255,255,0.6); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px;">Your Referral Reward</div>
+      <div style="font-family: 'Archivo Black', sans-serif; font-size: 28px; color: #fff;"><span class="e-dynamic">{{ event.ReferrerReward }}</span></div>
+      <div style="font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 600; margin-top: 6px;">Auto-applied at checkout. No code needed.</div>
+    </div>
+
+    <!-- BODY -->
+    <div style="background: #500724; padding: 28px 28px; text-align: center;">
+      <p class="punchy-copy" style="color: rgba(255,255,255,0.8); font-size: 14px;">
+        Someone you referred just placed their first order. It's already in your account and ready to use. Good looks.
+      </p>
+    </div>
+
+    <!-- CTA -->
+    <div style="background: #500724; padding: 0 24px 12px; text-align: center;">
+      <a href="#" class="pill-cta" style="background: #F472B6; color: #000;">Use Your Reward</a>
+    </div>
+    <div style="background: #500724; padding: 8px 24px 28px; text-align: center;">
+      <a href="#" class="pill-cta" style="background: transparent; color: #F472B6; border: 2px solid #F472B6; font-size: 13px; padding: 12px 32px;">Share Your Referral Link Again</a>
+    </div>
+
+    <!-- BOTTOM NOTE -->
+    <div style="background: rgba(236,72,153,0.08); padding: 24px; text-align: center; border-top: 1px solid rgba(236,72,153,0.2);">
+      <p style="font-size: 13px; color: rgba(255,255,255,0.5); max-width: 340px; margin: 0 auto;">The math is simple: more friends = more free stuff. There's no cap. Tell everyone.</p>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="background: #2d0313; padding: 24px;">
+      <div class="email-disclaimer" style="color: rgba(255,255,255,0.25);">ALL PRODUCTS CONTAIN .3% THC DELTA-9 OR LESS. PRODUCTS SOLD BY DELTA MUNCHIES ARE NOT INTENDED TO DIAGNOSE, TREAT, CURE OR PREVENT ANY DISEASE.</div>
+      <div class="email-footer-brand">
+        <div class="logo-text" style="color: #EC4899;">MUNCHIES!</div>
+        <div class="unsub" style="color: rgba(255,255,255,0.25);"><a href="#" style="color: rgba(255,255,255,0.35);">Update preferences</a> &middot; <a href="#" style="color: rgba(255,255,255,0.35);">Unsubscribe</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="impl-notes"><strong>Klaviyo:</strong> Dynamic: ReferrerReward. Include customer's unique referral link if available. Consider "Share via text" deep link for mobile.</div>
+</div>
+
+<script>
+function switchTab(tabId){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelector('.tab[data-tab="'+tabId+'"]').classList.add('active');
+  document.getElementById('tab-'+tabId).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
