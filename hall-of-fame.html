@@ -92,10 +92,10 @@
 .fc-match-no{position:absolute;top:12px;left:16px;font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;color:#4a4a58}
 .fc-upset{position:absolute;top:10px;right:14px;background:#FFD60A;color:#0B0B0F;font-family:'Oswald',sans-serif;font-size:8.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:4px}
 .fc-fighters{display:flex;align-items:stretch;gap:10px;margin-top:20px}
-.fc-fighter{flex:1;background:#1c1c26;border:1px solid #2c2c3a;border-radius:9px;padding:14px 12px;text-align:center;text-decoration:none;display:block;transition:all .18s}
-.fc-fighter:hover{border-color:#FF2D55;background:#241a20}
+.fc-fighter{flex:1;background:#1c1c26;border:1px solid #2c2c3a;border-radius:9px;padding:16px 12px;text-align:center;display:block}
+.fc-more{text-align:center;font-family:'Oswald',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#FF2D55;margin-top:18px;padding-top:16px;border-top:1px solid #23232e}
 .fc-flavor{font-family:'Archivo Black',sans-serif;font-size:13.5px;color:#fff;line-height:1.2;letter-spacing:-.2px;margin-bottom:5px}
-.fc-cat{font-family:'Oswald',sans-serif;font-size:8.5px;font-weight:600;letter-spacing:1.3px;text-transform:uppercase;color:#6e6e7d;margin-bottom:10px}
+.fc-cat{font-family:'Oswald',sans-serif;font-size:8.5px;font-weight:600;letter-spacing:1.3px;text-transform:uppercase;color:#6e6e7d}
 .fc-vote{font-family:'Oswald',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#FF2D55}
 .fc-vs{display:flex;align-items:center;justify-content:center;font-family:'Archivo Black',sans-serif;font-size:13px;color:#4a4a58;flex-shrink:0;width:24px}
 .fc-cta{background:#FF2D55;padding:44px 40px;text-align:center}
@@ -848,7 +848,7 @@
     <div class="fc-intro">
       <p class="fc-punch">We asked our team to pick the best flavor. It got heated. Two people stopped speaking.</p>
       <p>So we're outsourcing it to you.</p>
-      <p>Sixteen flavors. Eight matchups. One winner, decided entirely by vote &mdash; and no, we don't get a say.</p>
+      <p>Sixteen flavors. Eight matchups. One ballot, sixty seconds, and no say whatsoever from us.</p>
     </div>
 
     <!-- SCHEDULE -->
@@ -875,16 +875,16 @@
     <!-- BRACKET -->
     <div class="fc-bracket">
       <div class="fc-bracket-head">
-        <h2>Round Of 16</h2>
-        <p>Tap a flavor to cast your vote. One vote per matchup.</p>
+        <h2>A Taste Of The Bracket</h2>
+        <p>Three of the eight first-round matchups. The rest are waiting inside.</p>
       </div>
 
       <div class="fc-match">
         <div class="fc-match-no">MATCH 01</div>
         <div class="fc-fighters">
-          <a href="#" class="fc-fighter"><div class="fc-flavor">Strawberry Dream</div><div class="fc-cat">Froot Jam Gummies</div><div class="fc-vote">Vote &rarr;</div></a>
+          <div class="fc-fighter"><div class="fc-flavor">Strawberry Dream</div><div class="fc-cat">Froot Jam Gummies</div></div>
           <div class="fc-vs">VS</div>
-          <a href="#" class="fc-fighter"><div class="fc-flavor">Jet Fuel Gelato</div><div class="fc-cat">THCA Prerolls</div><div class="fc-vote">Vote &rarr;</div></a>
+          <div class="fc-fighter"><div class="fc-flavor">Jet Fuel Gelato</div><div class="fc-cat">THCA Prerolls</div></div>
         </div>
       </div>
 
@@ -892,74 +892,28 @@
         <div class="fc-match-no">MATCH 02</div>
         <div class="fc-upset">Upset Alert</div>
         <div class="fc-fighters">
-          <a href="#" class="fc-fighter"><div class="fc-flavor">Double Rainbow</div><div class="fc-cat">Cereal Crunchies</div><div class="fc-vote">Vote &rarr;</div></a>
+          <div class="fc-fighter"><div class="fc-flavor">Double Rainbow</div><div class="fc-cat">Cereal Crunchies</div></div>
           <div class="fc-vs">VS</div>
-          <a href="#" class="fc-fighter"><div class="fc-flavor">Tropical Splash</div><div class="fc-cat">THCP Smacked Vape</div><div class="fc-vote">Vote &rarr;</div></a>
+          <div class="fc-fighter"><div class="fc-flavor">Tropical Splash</div><div class="fc-cat">THCP Smacked Vape</div></div>
         </div>
       </div>
 
       <div class="fc-match">
         <div class="fc-match-no">MATCH 03</div>
         <div class="fc-fighters">
-          <a href="#" class="fc-fighter"><div class="fc-flavor">Mango Gelato</div><div class="fc-cat">Lil Ripper THCA Vape</div><div class="fc-vote">Vote &rarr;</div></a>
+          <div class="fc-fighter"><div class="fc-flavor">Mango Gelato</div><div class="fc-cat">Lil Ripper THCA Vape</div></div>
           <div class="fc-vs">VS</div>
-          <a href="#" class="fc-fighter"><div class="fc-flavor">Blueberry Crumble</div><div class="fc-cat">THCA Jelly Holes</div><div class="fc-vote">Vote &rarr;</div></a>
+          <div class="fc-fighter"><div class="fc-flavor">Blueberry Crumble</div><div class="fc-cat">THCA Jelly Holes</div></div>
         </div>
       </div>
 
-      <div class="fc-match">
-        <div class="fc-match-no">MATCH 04</div>
-        <div class="fc-fighters">
-          <a href="#" class="fc-fighter"><div class="fc-flavor">Cinnamon Brulee</div><div class="fc-cat">Cereal Crunchies</div><div class="fc-vote">Vote &rarr;</div></a>
-          <div class="fc-vs">VS</div>
-          <a href="#" class="fc-fighter"><div class="fc-flavor">Watermelon Slushy</div><div class="fc-cat">Lil Ripper THCA Vape</div><div class="fc-vote">Vote &rarr;</div></a>
-        </div>
-      </div>
-
-      <div class="fc-match">
-        <div class="fc-match-no">MATCH 05</div>
-        <div class="fc-upset">Upset Alert</div>
-        <div class="fc-fighters">
-          <a href="#" class="fc-fighter"><div class="fc-flavor">Tropical Passion</div><div class="fc-cat">Froot Jam Gummies</div><div class="fc-vote">Vote &rarr;</div></a>
-          <div class="fc-vs">VS</div>
-          <a href="#" class="fc-fighter"><div class="fc-flavor">Grape Cream Cake</div><div class="fc-cat">THCA Jelly Holes</div><div class="fc-vote">Vote &rarr;</div></a>
-        </div>
-      </div>
-
-      <div class="fc-match">
-        <div class="fc-match-no">MATCH 06</div>
-        <div class="fc-fighters">
-          <a href="#" class="fc-fighter"><div class="fc-flavor">Cocoa Fudge</div><div class="fc-cat">Cereal Crunchies</div><div class="fc-vote">Vote &rarr;</div></a>
-          <div class="fc-vs">VS</div>
-          <a href="#" class="fc-fighter"><div class="fc-flavor">Peachy Dreams</div><div class="fc-cat">THCP Smacked Vape</div><div class="fc-vote">Vote &rarr;</div></a>
-        </div>
-      </div>
-
-      <div class="fc-match">
-        <div class="fc-match-no">MATCH 07</div>
-        <div class="fc-fighters">
-          <a href="#" class="fc-fighter"><div class="fc-flavor">Strawberry Shortcake</div><div class="fc-cat">Lil Ripper THCA Vape</div><div class="fc-vote">Vote &rarr;</div></a>
-          <div class="fc-vs">VS</div>
-          <a href="#" class="fc-fighter"><div class="fc-flavor">Forbidden Watermelon</div><div class="fc-cat">THCA Jelly Holes</div><div class="fc-vote">Vote &rarr;</div></a>
-        </div>
-      </div>
-
-      <div class="fc-match">
-        <div class="fc-match-no">MATCH 08</div>
-        <div class="fc-upset">Upset Alert</div>
-        <div class="fc-fighters">
-          <a href="#" class="fc-fighter"><div class="fc-flavor">Apple Berry Nectar</div><div class="fc-cat">Froot Jam Gummies</div><div class="fc-vote">Vote &rarr;</div></a>
-          <div class="fc-vs">VS</div>
-          <a href="#" class="fc-fighter"><div class="fc-flavor">Grape Jelly Runtz</div><div class="fc-cat">Lil Ripper THCA Vape</div><div class="fc-vote">Vote &rarr;</div></a>
-        </div>
-      </div>
-
+      <div class="fc-more">+ 5 more matchups inside</div>
     </div>
 
     <!-- CTA -->
     <div class="fc-cta">
-      <h2>Every Vote Counts.<br>Every Grudge Is Valid.</h2>
-      <p>Round of 16 closes Friday night. Winners advance Saturday.</p>
+      <h2>Eight Matchups.<br>Sixty Seconds.</h2>
+      <p>One page, one pass, one ballot. Every grudge is valid.</p>
       <a href="#" class="cta-btn cta-onred">VOTE IN ROUND ONE</a>
       <div class="fc-deadline">Voting Closes Fri Aug 14 &middot; 11:59 PM</div>
     </div>
@@ -972,7 +926,7 @@
 
   </div>
 
-  <div class="impl-notes"><strong>Klaviyo:</strong> Send Tue Aug 11. Segment: all engaged subscribers. <strong>Each of the 16 flavor tiles is a separate tracked link</strong> &mdash; that's the whole mechanic, since a click is simultaneously a vote and a product view. Point each link at a voting page or Typeform pre-filled with the matchup + choice, then redirect to that product's PDP so voters land on something buyable. Tag the profile with their picks so later rounds can say "your flavor survived." <strong>Reporting caveat:</strong> publish margins as percentages from Round of 8 onward &mdash; turnout drops each round and raw counts will undercut the "the people have spoken" framing. Sixteen flavors here span gummies, crunchies, vapes and prerolls so every product line has something in the bracket. Upset Alert badges are on matches 02, 05 and 08 &mdash; move them once you decide seeding.</div>
+  <div class="impl-notes"><strong>Klaviyo:</strong> Send Tue Aug 11. Segment: all engaged subscribers. <strong>Single destination:</strong> every CTA points at one Typeform containing all 8 matchups &mdash; no per-flavor links in the email. Set Typeform to record the email address (hidden field from the Klaviyo link) so picks can be written back to the profile; later rounds can then say "your flavor survived" and the champion send can segment to people who voted for it. The three matchups shown here are a preview only and are intentionally not clickable &mdash; nothing in the bracket block should look like a button except the CTA. <strong>Reporting caveat:</strong> publish margins as percentages from Round of 8 onward; turnout drops each round and raw counts undercut the "the people have spoken" framing. Sixteen flavors span gummies, crunchies, vapes and prerolls so every product line has something in the bracket. <strong>Worth adding in Typeform:</strong> a final optional "which of these do you actually own?" question &mdash; free purchase-intent data while you have their attention.</div>
 </div>
 </div>
 
