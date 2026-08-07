@@ -144,6 +144,33 @@
 .tol-ps p{font-size:13.5px;color:#8b8fa3;line-height:1.65;max-width:380px;margin:0 auto 12px}
 .tol-ps a{font-family:'Oswald',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#FF2D55;text-decoration:none;border-bottom:1px solid rgba(255,45,85,.4);padding-bottom:2px}
 @media (max-width:620px){.tol-hero{padding:44px 24px 36px}.tol-hero h1{font-size:29px}.tol-open{padding:34px 24px 30px}.tol-open p{font-size:15px}.tol-punch{font-size:17px!important}.tol-sci{padding:32px 24px}.tol-opts{padding:10px 20px 36px}.tol-opt{padding:22px 20px}.tol-opt h3{font-size:18px}.tol-close{padding:36px 24px}.tol-close h2{font-size:19px}}
+
+.tab-btn[data-tab="fight-r8"].active{background:rgba(255,45,85,0.16);border-color:#FF2D55}
+.tab-btn[data-tab="fight-r8"].active .tab-offer{color:#FF2D55}
+.r8-hero{background:#0B0B0F;padding:56px 40px 44px;text-align:center;position:relative;overflow:hidden}
+.r8-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#FF2D55,#fff,#FF2D55)}
+.r8-hero::after{content:'8';position:absolute;bottom:-72px;left:50%;transform:translateX(-50%);font-family:'Archivo Black',sans-serif;font-size:230px;color:rgba(255,45,85,0.07);line-height:1;pointer-events:none}
+.r8-round{display:inline-block;border:1px solid #FF2D55;color:#FF2D55;font-family:'Oswald',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:20px;position:relative;z-index:2}
+.r8-hero h1{font-family:'Archivo Black',sans-serif;font-size:56px;color:#fff;line-height:.9;letter-spacing:-2.5px;text-transform:uppercase;margin-bottom:16px;position:relative;z-index:2}
+.r8-hero h1 .red{color:#FF2D55}
+.r8-sub{font-family:'Oswald',sans-serif;font-size:13.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#7d7d8a;position:relative;z-index:2}
+.r8-body{background:#f5f2ed;padding:44px 44px 40px;text-align:center}
+.r8-body p{font-size:16px;color:#555;line-height:1.8;max-width:450px;margin:0 auto 16px}
+.r8-body p:last-child{margin-bottom:0}
+.r8-punch{font-family:'Archivo Black',sans-serif;font-size:19px!important;color:#111!important;text-transform:uppercase;line-height:1.3!important;letter-spacing:-.4px}
+.fill{border:2px dashed #FF2D55;border-radius:10px;padding:18px 18px 16px;margin:0 auto;max-width:440px;background:rgba(255,45,85,0.05);position:relative}
+.fill-tag{position:absolute;top:-9px;left:16px;background:#FF2D55;color:#fff;font-family:'Oswald',sans-serif;font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:2px 8px;border-radius:3px}
+.fill p{font-size:14.5px!important;color:#9a5f70!important;line-height:1.65!important;margin:6px 0 0!important;font-style:italic}
+.r8-results{background:#14141b;padding:38px 32px 40px}
+.r8-res-head{font-family:'Oswald',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:#FF2D55;text-align:center;margin-bottom:22px}
+.r8-survivors{background:#0B0B0F;padding:36px 26px 40px}
+.r8-surv-head{text-align:center;margin-bottom:22px}
+.r8-surv-head h2{font-family:'Archivo Black',sans-serif;font-size:22px;color:#fff;text-transform:uppercase;letter-spacing:-.5px;margin-bottom:6px}
+.r8-surv-head p{font-size:13px;color:#7d7d8a}
+.r8-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:460px;margin:0 auto}
+.r8-slot{background:#14141b;border:2px dashed #2c2c3a;border-radius:9px;padding:16px 10px;text-align:center;font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#4a4a58;line-height:1.5}
+.r8-slot span{display:block;font-family:'Archivo Black',sans-serif;font-size:13px;color:#6e6e7d;letter-spacing:-.2px;margin-top:5px}
+@media (max-width:620px){.r8-hero{padding:44px 24px 36px}.r8-hero h1{font-size:40px}.r8-hero::after{font-size:160px;bottom:-52px}.r8-body{padding:34px 24px 30px}.r8-punch{font-size:17px!important}.r8-results{padding:30px 22px 32px}.r8-survivors{padding:30px 18px 34px}.r8-grid{grid-template-columns:1fr;gap:8px}}
 </style>
 </head>
 <body>
@@ -200,6 +227,11 @@
       <span class="tab-stage">Aug 13 &middot; Thu</span>
       <span class="tab-name">The Tolerance Talk &mdash; We Need To Talk</span>
       <span class="tab-offer">Education &middot; no offer</span>
+    </div>
+    <div class="tab-btn" data-tab="fight-r8" onclick="switchTab('fight-r8')">
+      <span class="tab-stage">Aug 15 &middot; Bracket 2/4</span>
+      <span class="tab-name">Flavor Fight Club &mdash; Round of 8</span>
+      <span class="tab-offer">Interactive &middot; voting</span>
     </div>
   </div>
   <div class="tab-bar-divider"></div>
@@ -1058,6 +1090,104 @@
   </div>
 
   <div class="impl-notes"><strong>Klaviyo:</strong> Send Thu Aug 13. Segment: repeat purchasers &mdash; this only lands for people who've bought enough to notice the effect. Suppress first-time buyers; telling someone their tolerance is climbing before they've had a second order is confusing and slightly alarming. <strong>No offer and no shop CTA on purpose</strong> &mdash; the only link is the bracket P.S. The value of this send is trust; adding a buy button turns candour into a pitch and kills the setup for Monday's THCP sale. <strong>Compliance:</strong> keep the framing educational, never therapeutic &mdash; the 33&times; figure is in-vitro CB1 binding affinity (Citti et al., 2019) and is caveated in the copy on purpose. Do not let it get shortened to "33x stronger" in a subject line or on social.</div>
+</div>
+</div>
+
+
+<div class="tab-panel" id="tab-fight-r8">
+<div class="flow-stage">
+  <div class="stage-badge">Bracket &mdash; Email 2 of 4</div>
+  <div class="stage-title">Flavor Fight Club &mdash; Round of 8</div>
+  <div class="stage-meta">
+    <span style="color: #FF2D55;">Interactive &middot; results + vote</span>
+    <span style="color: #888;">Send Aug 15 (Sat)</span>
+  </div>
+  <span class="type-tag interactive">Interactive</span>
+
+  <div class="email-header-bar">
+    <div class="row"><span class="label">Subject:</span><span class="val">Eight left. Half of you were wrong.</span></div>
+    <div class="row"><span class="label">Preview:</span><span class="val">Round one is settled. Somebody's favorite didn't make it.</span></div>
+    <div class="row"><span class="label">Alt A:</span><span class="val">We have survivors.</span></div>
+    <div class="row"><span class="label">Alt B:</span><span class="val">Eight flavors went home. One of them was yours.</span></div>
+  </div>
+
+  <div class="email-wrapper">
+
+    <!-- HERO -->
+    <div class="r8-hero">
+      <div class="r8-round">Round Two of Four</div>
+      <h1>Eight<br><span class="red">Left.</span></h1>
+      <p class="r8-sub">Four Fights &middot; Sixty Seconds &middot; You Decide</p>
+    </div>
+
+    <!-- BODY -->
+    <div class="r8-body">
+      <p class="r8-punch">Round one is over. Eight flavors advanced. Eight went home.</p>
+      <p>Somewhere out there, eight people are taking this personally. We respect that.</p>
+      <p>Four fights left in this round, and the easy matchups are gone &mdash; everything still standing got here by beating something good.</p>
+    </div>
+
+    <!-- RESULTS (fill on send) -->
+    <div class="r8-results">
+      <div class="r8-res-head">How Round One Went</div>
+      <div class="fill">
+        <div class="fill-tag">Fill On Send</div>
+        <p>Two or three lines once R16 closes: the biggest upset, the closest margin, and anything genuinely surprising. Report margins as <strong>percentages, never raw vote counts</strong>. Example shape &mdash; "Cinnamon Brulee took 71% and never looked threatened. Mango Gelato survived by two points. And nobody, including us, had Grape Jelly Runtz making it out of round one."</p>
+      </div>
+    </div>
+
+    <!-- SURVIVORS (fill on send) -->
+    <div class="r8-survivors">
+      <div class="r8-surv-head">
+        <h2>The Final Eight</h2>
+        <p>Everything still standing.</p>
+      </div>
+      <div class="r8-grid">
+        <div class="r8-slot">Survivor 01<span>Flavor Name</span></div>
+        <div class="r8-slot">Survivor 02<span>Flavor Name</span></div>
+        <div class="r8-slot">Survivor 03<span>Flavor Name</span></div>
+        <div class="r8-slot">Survivor 04<span>Flavor Name</span></div>
+        <div class="r8-slot">Survivor 05<span>Flavor Name</span></div>
+        <div class="r8-slot">Survivor 06<span>Flavor Name</span></div>
+        <div class="r8-slot">Survivor 07<span>Flavor Name</span></div>
+        <div class="r8-slot">Survivor 08<span>Flavor Name</span></div>
+      </div>
+    </div>
+
+    <!-- SCHEDULE -->
+    <div class="fc-sched">
+      <div class="fc-sched-head">What's Left</div>
+      <div class="fc-sched-row">
+        <div class="fc-sched-when">Now &ndash; Tue</div>
+        <div class="fc-sched-what"><strong>Round of 8.</strong> Four fights. Vote below.</div>
+      </div>
+      <div class="fc-sched-row">
+        <div class="fc-sched-when">Wed Aug 19</div>
+        <div class="fc-sched-what"><strong>The Final Four.</strong> Last vote of the tournament.</div>
+      </div>
+      <div class="fc-sched-row final">
+        <div class="fc-sched-when">Sat Aug 22</div>
+        <div class="fc-sched-what"><strong>Champion crowned</strong> &mdash; and it goes 20% off for 48 hours.</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="fc-cta">
+      <h2>Four Matchups.<br>Sixty Seconds.</h2>
+      <p>Your round-one picks are locked in. Let's see if your taste survives contact with everyone else's.</p>
+      <a href="#" class="cta-btn cta-onred">VOTE IN ROUND TWO</a>
+      <div class="fc-deadline">Voting Closes Tue Aug 18 &middot; 11:59 PM</div>
+    </div>
+
+    <div class="email-footer">
+      <div class="footer-brand">MUNCHIES!</div>
+      Delta Munchies &mdash; California Grown<br>
+      <a href="#">Unsubscribe</a> &nbsp;|&nbsp; <a href="#">Manage Preferences</a> &nbsp;|&nbsp; <a href="#">View in Browser</a>
+    </div>
+
+  </div>
+
+  <div class="impl-notes"><strong>Klaviyo:</strong> Send Sat Aug 15 once R16 voting has closed. <strong>Two blocks are intentionally unfinished</strong> &mdash; the results recap and the eight survivor tiles &mdash; because they can't be written until votes are in. Everything else is final copy and needs no edit. <strong>Reporting rule:</strong> percentages only, never raw counts; turnout drops each round and a headline like "won with 61 votes" undercuts the whole "the people have spoken" premise. <strong>Segmentation:</strong> if the R16 Typeform wrote picks back to the profile, split this send &mdash; voters get "your pick survived / your pick is out" as the opening line, non-voters get the generic version and a note that it's not too late to join. That personalisation is the single biggest lift available on this email. New Typeform for round two with the four surviving matchups; same hidden-email-field setup as round one.</div>
 </div>
 </div>
 
