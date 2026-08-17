@@ -213,6 +213,43 @@
 .upg-close h2{font-family:'Archivo Black',sans-serif;font-size:24px;color:#0d0e15;text-transform:uppercase;line-height:1.15;letter-spacing:-.6px;margin-bottom:22px}
 .upg-deadline{font-family:'Oswald',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(13,14,21,.62);margin-top:18px}
 @media (max-width:620px){.upg-hero{padding:42px 24px 36px}.upg-hero h1{font-size:40px}.upg-hero::after{font-size:180px;bottom:-66px}.upg-callback{padding:32px 24px}.upg-callback p{font-size:17px}.upg-weight{padding:32px 24px 34px}.upg-weight h2{font-size:20px}.upg-prods{padding:28px 20px 32px}.upg-card{flex-direction:column;align-items:flex-start;gap:14px;padding:18px}.upg-img{width:100%;height:120px}.upg-startlow{padding:26px 22px 28px}.upg-close{padding:32px 24px 36px}.upg-close h2{font-size:20px}}
+
+.tab-btn[data-tab="sudden-death"].active{background:rgba(255,45,85,0.2);border-color:#FF2D55}
+.tab-btn[data-tab="sudden-death"].active .tab-offer{color:#FF2D55}
+.type-tag.urgent{background:#FF2D55;color:#fff}
+.sd-hero{background:#0B0B0F;padding:52px 40px 44px;text-align:center;position:relative;overflow:hidden}
+.sd-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:#FF2D55}
+.sd-flatline{display:block;margin:0 auto 22px;position:relative;z-index:2}
+.sd-tag{display:inline-block;background:#FF2D55;color:#fff;font-family:'Oswald',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:6px 14px;border-radius:3px;margin-bottom:20px;position:relative;z-index:2}
+.sd-hero h1{font-family:'Archivo Black',sans-serif;font-size:58px;color:#fff;line-height:.88;letter-spacing:-2.6px;text-transform:uppercase;margin-bottom:18px;position:relative;z-index:2}
+.sd-hero h1 .red{color:#FF2D55}
+.sd-sub{font-family:'Oswald',sans-serif;font-size:13.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#7d7d8a;position:relative;z-index:2}
+.sd-tiebar{background:#FF2D55;padding:0}
+.sd-tiebar table{width:100%;border-collapse:collapse}
+.sd-half{width:50%;padding:20px 16px;text-align:center;vertical-align:middle}
+.sd-half.a{background:#FF2D55}
+.sd-half.b{background:#D91E42}
+.sd-pct{font-family:'Archivo Black',sans-serif;font-size:34px;color:#fff;line-height:1;letter-spacing:-1px}
+.sd-name{font-family:'Oswald',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.82);margin-top:7px;line-height:1.4}
+.sd-body{background:#f5f2ed;padding:44px 44px 40px;text-align:center}
+.sd-body p{font-size:16px;color:#555;line-height:1.8;max-width:450px;margin:0 auto 16px}
+.sd-body p:last-child{margin-bottom:0}
+.sd-punch{font-family:'Archivo Black',sans-serif;font-size:20px!important;color:#111!important;text-transform:uppercase;line-height:1.3!important;letter-spacing:-.4px}
+.sd-nocoin{font-family:'Archivo Black',sans-serif;font-size:15px!important;color:#FF2D55!important;text-transform:uppercase;letter-spacing:.3px}
+.sd-stakes{background:#14141b;padding:38px 32px 40px}
+.sd-stakes-head{font-family:'Oswald',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:#FF2D55;text-align:center;margin-bottom:24px}
+.sd-stake{max-width:430px;margin:0 auto 14px;padding:16px 18px;background:#1c1c26;border-left:3px solid #FF2D55;border-radius:0 8px 8px 0}
+.sd-stake:last-child{margin-bottom:0}
+.sd-stake-if{font-family:'Archivo Black',sans-serif;font-size:13px;color:#fff;text-transform:uppercase;letter-spacing:-.2px;margin-bottom:5px}
+.sd-stake p{font-size:14px;color:#8b8fa3;line-height:1.6;margin:0}
+.sd-cta{background:#FF2D55;padding:44px 40px 46px;text-align:center}
+.sd-cta h2{font-family:'Archivo Black',sans-serif;font-size:29px;color:#fff;text-transform:uppercase;line-height:1.1;letter-spacing:-.8px;margin-bottom:12px}
+.sd-cta p{font-size:15px;color:rgba(255,255,255,.85);line-height:1.6;max-width:370px;margin:0 auto 26px}
+.sd-deadline{font-family:'Archivo Black',sans-serif;font-size:14px;letter-spacing:1px;text-transform:uppercase;color:#0B0B0F;background:#fff;display:inline-block;padding:9px 18px;border-radius:5px;margin-top:20px}
+.sd-note{background:#0B0B0F;padding:24px 34px;text-align:center}
+.sd-note p{font-size:13.5px;color:#7d7d8a;line-height:1.65;max-width:400px;margin:0 auto}
+.sd-note strong{color:#fff}
+@media (max-width:620px){.sd-hero{padding:40px 24px 34px}.sd-hero h1{font-size:40px}.sd-pct{font-size:27px}.sd-half{padding:16px 10px}.sd-name{font-size:9px}.sd-body{padding:32px 24px 30px}.sd-punch{font-size:17px!important}.sd-stakes{padding:30px 20px 32px}.sd-cta{padding:34px 24px 38px}.sd-cta h2{font-size:22px}}
 </style>
 </head>
 <body>
@@ -279,6 +316,11 @@
       <span class="tab-stage">Aug 17 &middot; Sale</span>
       <span class="tab-name">The Upgrade &mdash; THCP Flash Sale</span>
       <span class="tab-offer">20% off &middot; 48hr</span>
+    </div>
+    <div class="tab-btn" data-tab="sudden-death" onclick="switchTab('sudden-death')">
+      <span class="tab-stage">Aug 18 &middot; Tiebreaker</span>
+      <span class="tab-name">Sudden Death &mdash; Round Two Tied</span>
+      <span class="tab-offer">Flash vote &middot; 1 day</span>
     </div>
   </div>
   <div class="tab-bar-divider"></div>
@@ -1340,6 +1382,91 @@
   </div>
 
   <div class="impl-notes"><strong>Klaviyo:</strong> Send Mon Aug 17, sale live 48 hours (ends Tue 11:59pm). <strong>Prioritise anyone who opened or clicked Thursday's Tolerance Talk</strong> &mdash; the hero line is a direct callback and lands hardest for them; everyone else still reads it fine. Discount scoped to THCP SKUs only (Smacked Vapes, 1g THCP Diamond Prerolls, 2g THCP Diamond Jelly Holes) &mdash; do not let the code apply to THCA. <strong>No bracket content anywhere in this email on purpose</strong>; it's the highest-AOV send of the month and gets clear air. The "start low" block is not optional &mdash; it's the reason Thursday's honesty converts here rather than reading as a bait-and-switch, and it heads off the most common bad first experience with THCP. Consider a Tue 6pm "ends tonight" reminder to openers who didn't buy.</div>
+</div>
+</div>
+
+
+<div class="tab-panel" id="tab-sudden-death">
+<div class="flow-stage">
+  <div class="stage-badge">Bracket &mdash; Tiebreaker</div>
+  <div class="stage-title">Sudden Death &mdash; Round Two Ended Tied</div>
+  <div class="stage-meta">
+    <span style="color: #FF2D55;">Flash vote &middot; closes tonight</span>
+    <span style="color: #888;">Send Aug 18 (Tue)</span>
+  </div>
+  <span class="type-tag urgent">Urgent</span>
+
+  <div class="email-header-bar">
+    <div class="row"><span class="label">Subject:</span><span class="val">We have a problem. It's a tie.</span></div>
+    <div class="row"><span class="label">Preview:</span><span class="val">Sudden death. One fight, one night, and we're not flipping a coin.</span></div>
+    <div class="row"><span class="label">Alt A:</span><span class="val">Dead even. You have until midnight.</span></div>
+    <div class="row"><span class="label">Alt B:</span><span class="val">Nobody won. That's not a typo.</span></div>
+  </div>
+
+  <div class="email-wrapper">
+
+    <div class="sd-hero">
+      <div class="sd-tag">Sudden Death</div>
+      <h1>Nobody<br><span class="red">Won.</span></h1>
+      <p class="sd-sub">One Fight &middot; One Night &middot; No Coin Flip</p>
+    </div>
+
+    <!-- THE TIE, VISUALISED -->
+    <div class="sd-tiebar">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="sd-half a">
+            <div class="sd-pct">50%</div>
+            <div class="sd-name">Jet Fuel Gelato<br>THCA Prerolls</div>
+          </td>
+          <td class="sd-half b">
+            <div class="sd-pct">50%</div>
+            <div class="sd-name">Triple Berry Pie<br>THCP Lil Ripper</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="sd-body">
+      <p class="sd-punch">Three fights in round two produced a winner. The fourth produced this.</p>
+      <p>Jet Fuel Gelato and Triple Berry Pie finished dead even. <strong>Not one vote between them.</strong> Which leaves the bracket stuck and the Final Four one flavor short.</p>
+      <p class="sd-nocoin">We're not flipping a coin for it.</p>
+    </div>
+
+    <!-- STAKES -->
+    <div class="sd-stakes">
+      <div class="sd-stakes-head">What You're Actually Deciding</div>
+      <div class="sd-stake">
+        <div class="sd-stake-if">If Jet Fuel Gelato wins</div>
+        <p>Prerolls stay alive. The only one left in the tournament makes the Final Four.</p>
+      </div>
+      <div class="sd-stake">
+        <div class="sd-stake-if">If Triple Berry Pie wins</div>
+        <p>Prerolls are out entirely, and three of the Final Four are vapes. Lil Ripper is running away with this thing.</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="sd-cta">
+      <h2>Break The Tie.</h2>
+      <p>One question. Ten seconds. Then we can all get on with our lives.</p>
+      <a href="#" class="cta-btn cta-onred">CAST THE DECIDING VOTE</a>
+      <div class="sd-deadline">Closes Tonight &middot; 11:59 PM</div>
+    </div>
+
+    <div class="sd-note">
+      <p><strong>The Final Four still drops tomorrow.</strong> We just need to know who's in it. And for the record &mdash; round two pulled 41% more votes than round one, which is how a fight ends up this close in the first place.</p>
+    </div>
+
+    <div class="email-footer">
+      <div class="footer-brand">MUNCHIES!</div>
+      Delta Munchies &mdash; California Grown<br>
+      <a href="#">Unsubscribe</a> &nbsp;|&nbsp; <a href="#">Manage Preferences</a> &nbsp;|&nbsp; <a href="#">View in Browser</a>
+    </div>
+
+  </div>
+
+  <div class="impl-notes"><strong>Klaviyo:</strong> Send Tue Aug 18, morning. Segment: everyone who has voted in either round (they're invested) plus all engaged subscribers. <strong>Hard close tonight 11:59pm</strong> so the Final Four can still ship Wednesday as promised in the R16 and R8 emails. Single-question Typeform &mdash; do not reuse the round-two form, and do not let people who already voted in round two vote twice on this fight; gate by email if the hidden field is capturing. <strong>Why we're not resolving this quietly:</strong> the raw result was 34&ndash;34. It does tip to Triple Berry Pie if you dedupe by IP or drop the ten sub-15-second ballots &mdash; but scrubbing data after the fact to select a winner is the one thing that would discredit the whole "decided entirely by vote" premise. Better to make the tie the story. Percentages only, as with every round.</div>
 </div>
 </div>
 
