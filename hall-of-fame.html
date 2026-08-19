@@ -289,6 +289,37 @@
 .f4-prize p{font-size:14px;color:rgba(11,11,15,.72);line-height:1.6;max-width:390px;margin:0 auto}
 .f4-deadline{font-family:'Oswald',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:18px}
 @media (max-width:620px){.f4-hero{padding:40px 24px 34px}.f4-hero h1{font-size:36px}.f4-hero::after{font-size:170px;bottom:-58px}.f4-lede{padding:32px 24px 30px}.f4-punch{font-size:18px!important}.f4-alive{font-size:21px!important}.f4-scout{padding:30px 16px 34px}.f4-flavor{font-size:17px;padding-right:0}.f4-seedtag{position:static;display:inline-block;margin-bottom:8px}.f4-cta{padding:34px 24px 38px}.f4-cta h2{font-size:22px}}
+
+.tab-btn[data-tab^="champ-"].active{background:rgba(212,175,55,0.16);border-color:#D4AF37}
+.tab-btn[data-tab^="champ-"].active .tab-offer{color:#D4AF37}
+.type-tag.champion{background:#D4AF37;color:#0B0B0F}
+.ch-hero{background:#0B0B0F;padding:50px 40px 44px;text-align:center;position:relative;overflow:hidden}
+.ch-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#D4AF37,#F7E9A0,#D4AF37)}
+.ch-hero::after{content:'';position:absolute;top:-150px;left:50%;transform:translateX(-50%);width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.16) 0%,transparent 62%);pointer-events:none}
+.ch-eyebrow{font-family:'Oswald',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:4.5px;text-transform:uppercase;color:#D4AF37;margin-bottom:18px;position:relative;z-index:2}
+.ch-crown{font-size:40px;line-height:1;margin-bottom:14px;position:relative;z-index:2}
+.ch-hero h1{font-family:'Archivo Black',sans-serif;font-size:42px;color:#fff;line-height:1;letter-spacing:-1.6px;text-transform:uppercase;margin-bottom:10px;position:relative;z-index:2}
+.ch-hero h1 .gld{color:#D4AF37}
+.ch-line{font-family:'Oswald',sans-serif;font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#8a8577;position:relative;z-index:2}
+.ch-margin{background:#D4AF37;padding:14px 20px;text-align:center;font-family:'Oswald',sans-serif;font-size:12px;font-weight:600;letter-spacing:2.2px;text-transform:uppercase;color:#0B0B0F}
+.ch-body{background:#f5f2ed;padding:44px 44px 40px;text-align:center}
+.ch-body p{font-size:16px;color:#555;line-height:1.8;max-width:450px;margin:0 auto 16px}
+.ch-body p:last-child{margin-bottom:0}
+.ch-punch{font-family:'Archivo Black',sans-serif;font-size:21px!important;color:#111!important;text-transform:uppercase;line-height:1.28!important;letter-spacing:-.5px}
+.ch-kicker{font-family:'Archivo Black',sans-serif;font-size:17px!important;color:#B8912A!important;text-transform:uppercase;line-height:1.3!important;letter-spacing:-.3px}
+.ch-offer{background:#0B0B0F;padding:44px 40px 46px;text-align:center;position:relative;overflow:hidden}
+.ch-offer::after{content:'20%';position:absolute;bottom:-64px;right:-14px;font-family:'Archivo Black',sans-serif;font-size:190px;color:rgba(212,175,55,.06);line-height:1;pointer-events:none}
+.ch-offer-eyebrow{font-family:'Oswald',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#D4AF37;margin-bottom:16px;position:relative;z-index:2}
+.ch-offer h2{font-family:'Archivo Black',sans-serif;font-size:32px;color:#fff;text-transform:uppercase;line-height:1.06;letter-spacing:-1.1px;margin-bottom:14px;position:relative;z-index:2}
+.ch-offer h2 .gld{color:#D4AF37}
+.ch-offer p{font-size:15px;color:#9a958a;line-height:1.7;max-width:410px;margin:0 auto 26px;position:relative;z-index:2}
+.cta-gold-champ{background:#D4AF37;color:#0B0B0F;border:2px solid #D4AF37}
+.cta-gold-champ:hover{background:#F7E9A0;border-color:#F7E9A0}
+.ch-week{font-family:'Oswald',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#8a8577;margin-top:18px;position:relative;z-index:2}
+.ch-thanks{background:#1a1814;padding:28px 34px;text-align:center}
+.ch-thanks p{font-size:14px;color:#8a8577;line-height:1.7;max-width:400px;margin:0 auto}
+.ch-thanks strong{color:#D4AF37}
+@media (max-width:620px){.ch-hero{padding:40px 24px 36px}.ch-hero h1{font-size:31px}.ch-body{padding:32px 24px 30px}.ch-punch{font-size:18px!important}.ch-kicker{font-size:15px!important}.ch-offer{padding:34px 24px 38px}.ch-offer h2{font-size:24px}.ch-offer::after{font-size:130px;bottom:-44px}.ch-margin{font-size:10px;letter-spacing:1.4px}}
 </style>
 </head>
 <body>
@@ -365,6 +396,26 @@
       <span class="tab-stage">Aug 21 &middot; Final Vote</span>
       <span class="tab-name">Final Four &mdash; Prerolls Still Alive</span>
       <span class="tab-offer">Last vote &middot; champion Sat</span>
+    </div>
+    <div class="tab-btn" data-tab="champ-jetfuel" onclick="switchTab('champ-jetfuel')">
+      <span class="tab-stage">Aug 23 &middot; Champion V1</span>
+      <span class="tab-name">Champion &mdash; Jet Fuel Gelato</span>
+      <span class="tab-offer">Prerolls 20% off</span>
+    </div>
+    <div class="tab-btn" data-tab="champ-watermelon" onclick="switchTab('champ-watermelon')">
+      <span class="tab-stage">Aug 23 &middot; Champion V2</span>
+      <span class="tab-name">Champion &mdash; Watermelon Slushy</span>
+      <span class="tab-offer">Vapes 20% off</span>
+    </div>
+    <div class="tab-btn" data-tab="champ-strawberry" onclick="switchTab('champ-strawberry')">
+      <span class="tab-stage">Aug 23 &middot; Champion V3</span>
+      <span class="tab-name">Champion &mdash; Strawberry Kush Pop</span>
+      <span class="tab-offer">Vapes 20% off</span>
+    </div>
+    <div class="tab-btn" data-tab="champ-mango" onclick="switchTab('champ-mango')">
+      <span class="tab-stage">Aug 23 &middot; Champion V4</span>
+      <span class="tab-name">Champion &mdash; Mango Gelato</span>
+      <span class="tab-offer">Vapes 20% off</span>
     </div>
   </div>
   <div class="tab-bar-divider"></div>
@@ -1620,6 +1671,243 @@
   <div class="impl-notes"><strong>Klaviyo:</strong> Send Fri Aug 21 &mdash; <strong>Jet Fuel Gelato won sudden death 58&ndash;42, so this is the version that ships.</strong> Single-question Typeform, four options, highest vote share is the champion. This is the last vote of the tournament; the champion email ships Sunday and the winning SKU goes 20% off for the full week. Jet Fuel is listed <em>first</em> and given the gold underdog treatment on purpose &mdash; the survival story is the most interesting thing in the bracket and first position gets the most votes. <strong>Merchandising note:</strong> this is the better outcome for the champion sale, because a preroll win gives you a different category to discount than the vape-heavy month you've already run. Stock all four SKUs; you won't know the winner until Friday night. The "you're picking what goes on sale" line converts the vote into purchase intent.</div>
 </div>
 </div>
+
+
+<div class="tab-panel" id="tab-champ-jetfuel">
+<div class="flow-stage">
+  <div class="stage-badge">Champion &middot; VERSION 1</div>
+  <div class="stage-title">Champion &mdash; if Jet Fuel Gelato wins</div>
+  <div class="stage-meta">
+    <span style="color: #D4AF37;">Preroll collection 20% off &middot; all week</span>
+    <span style="color: #888;">Send Aug 23 (Sun)</span>
+  </div>
+  <span class="type-tag champion">Champion</span>
+
+  <div class="email-header-bar">
+    <div class="row"><span class="label">Subject:</span><span class="val">The prerolls won. We are as surprised as you are.</span></div>
+    <div class="row"><span class="label">Preview:</span><span class="val">Jet Fuel Gelato beat every vape in the building. Whole preroll collection is 20% off.</span></div>
+    <div class="row"><span class="label">Alt A:</span><span class="val">Against all odds and roughly all of you.</span></div>
+  </div>
+
+  <div class="email-wrapper">
+
+    <div class="ch-hero">
+      <div class="ch-crown">&#128081;</div>
+      <div class="ch-eyebrow">Flavor Fight Club &middot; Champion</div>
+      <h1>Jet Fuel Gelato<br><span class="gld">Is Your Champion.</span></h1>
+      <p class="ch-line">THCA Diamond Prerolls</p>
+    </div>
+
+    <div class="ch-margin">Won by a hair &middot; The Closest Final Of The Tournament</div>
+
+    <div class="ch-body">
+      <p class="ch-punch">One preroll against three vapes. The preroll won.</p>
+      <p>This flavor never had a comfortable round. It won by two points, tied dead even, survived a sudden death nobody planned for, and then walked into a final where it was outnumbered three to one.</p>
+      <p>It won that too. Barely. Which is somehow the only way this could have ended.</p>
+      <p class="ch-kicker">The last preroll standing is the last one standing for a reason.</p>
+    </div>
+
+    <div class="ch-offer">
+      <div class="ch-offer-eyebrow">Because it earned it</div>
+      <h2>The Entire Preroll<br><span class="gld">Collection Is 20% Off.</span></h2>
+      <p>Not just the winner. Every preroll we make. Jelly Holes, Double Doinks, the 5-packs, THCA and THCP. Jet Fuel carried the category, so the category eats.</p>
+      <a href="#" class="cta-btn cta-gold-champ">SHOP ALL PREROLLS &mdash; 20% OFF</a>
+      <div class="ch-week">20% Off All Week &middot; Ends Sun Aug 30</div>
+    </div>
+
+    <div class="ch-thanks">
+      <p>Two weeks, four rounds, one genuine tie and a sudden death nobody saw coming. <strong>You picked all of it.</strong> We just counted.</p>
+    </div>
+
+    <div class="email-footer">
+      <div class="footer-brand">MUNCHIES!</div>
+      Delta Munchies &mdash; California Grown<br>
+      <a href="#">Unsubscribe</a> &nbsp;|&nbsp; <a href="#">Manage Preferences</a> &nbsp;|&nbsp; <a href="#">View in Browser</a>
+    </div>
+
+  </div>
+
+  <div class="impl-notes"><strong>Klaviyo:</strong> Send Sun Aug 23 &mdash; <strong>use only if Jet Fuel Gelato wins.</strong> Delete the other three variants before the send so the wrong one can't go out. <strong>Fill on send:</strong> the gold margin bar needs the real final percentages. Discount scoped to the <strong>entire preroll collection</strong>, not just the winning SKU, and runs the full week to Sun Aug 30. This is the best outcome commercially: it discounts a category August has barely promoted, rather than a fourth vape moment.</div>
+</div>
+</div>
+
+
+<div class="tab-panel" id="tab-champ-watermelon">
+<div class="flow-stage">
+  <div class="stage-badge">Champion &middot; VERSION 2</div>
+  <div class="stage-title">Champion &mdash; if Watermelon Slushy wins</div>
+  <div class="stage-meta">
+    <span style="color: #D4AF37;">Vape collection 20% off &middot; all week</span>
+    <span style="color: #888;">Send Aug 23 (Sun)</span>
+  </div>
+  <span class="type-tag champion">Champion</span>
+
+  <div class="email-header-bar">
+    <div class="row"><span class="label">Subject:</span><span class="val">Wire to wire. Watermelon Slushy never trailed once.</span></div>
+    <div class="row"><span class="label">Preview:</span><span class="val">It won every round it entered. Whole vape collection is 20% off.</span></div>
+    <div class="row"><span class="label">Alt A:</span><span class="val">The most boring champion imaginable. We mean that as a compliment.</span></div>
+  </div>
+
+  <div class="email-wrapper">
+
+    <div class="ch-hero">
+      <div class="ch-crown">&#128081;</div>
+      <div class="ch-eyebrow">Flavor Fight Club &middot; Champion</div>
+      <h1>Watermelon Slushy<br><span class="gld">Is Your Champion.</span></h1>
+      <p class="ch-line">THCA Lil Ripper Vape</p>
+    </div>
+
+    <div class="ch-margin">Won by a nose &middot; The Closest Final Of The Tournament</div>
+
+    <div class="ch-body">
+      <p class="ch-punch">60 to 40. Then 60 to 40 again. Then it finished the job.</p>
+      <p>Watermelon Slushy did not have a bad round, a close call, or a moment of doubt in this entire tournament. Identical margins two rounds running, and not once did it look like losing.</p>
+      <p>The final was the first time anyone got near it. It held on anyway, by the narrowest gap of the whole run.</p>
+      <p class="ch-kicker">Dominant the whole way, and it still made us sweat at the end.</p>
+    </div>
+
+    <div class="ch-offer">
+      <div class="ch-offer-eyebrow">Because it earned it</div>
+      <h2>The Entire Vape<br><span class="gld">Collection Is 20% Off.</span></h2>
+      <p>Not just the winner. Every Lil Ripper we make. THCA, THCP, every flavor, every tank. Watermelon Slushy proved the category, so the whole category goes on sale.</p>
+      <a href="#" class="cta-btn cta-gold-champ">SHOP ALL VAPES &mdash; 20% OFF</a>
+      <div class="ch-week">20% Off All Week &middot; Ends Sun Aug 30</div>
+    </div>
+
+    <div class="ch-thanks">
+      <p>Two weeks, four rounds, one genuine tie and a sudden death nobody saw coming. <strong>You picked all of it.</strong> We just counted.</p>
+    </div>
+
+    <div class="email-footer">
+      <div class="footer-brand">MUNCHIES!</div>
+      Delta Munchies &mdash; California Grown<br>
+      <a href="#">Unsubscribe</a> &nbsp;|&nbsp; <a href="#">Manage Preferences</a> &nbsp;|&nbsp; <a href="#">View in Browser</a>
+    </div>
+
+  </div>
+
+  <div class="impl-notes"><strong>Klaviyo:</strong> Send Sun Aug 23 &mdash; <strong>use only if Watermelon Slushy wins.</strong> Delete the other three variants before the send so the wrong one can't go out. <strong>Fill on send:</strong> the gold margin bar needs the real final percentages. Discount scoped to the <strong>entire Lil Ripper vape collection</strong>, not just the winning SKU, and runs the full week to Sun Aug 30. Third vape-led moment of the month. Consider leading the follow-up flow with the THCP line to widen the basket rather than repeating THCA.</div>
+</div>
+</div>
+
+
+<div class="tab-panel" id="tab-champ-strawberry">
+<div class="flow-stage">
+  <div class="stage-badge">Champion &middot; VERSION 3</div>
+  <div class="stage-title">Champion &mdash; if Strawberry Kush Pop wins</div>
+  <div class="stage-meta">
+    <span style="color: #D4AF37;">Vape collection 20% off &middot; all week</span>
+    <span style="color: #888;">Send Aug 23 (Sun)</span>
+  </div>
+  <span class="type-tag champion">Champion</span>
+
+  <div class="email-header-bar">
+    <div class="row"><span class="label">Subject:</span><span class="val">The favorite finally had to sweat.</span></div>
+    <div class="row"><span class="label">Preview:</span><span class="val">Strawberry Kush Pop led from day one and nearly blew it. Whole vape collection is 20% off.</span></div>
+    <div class="row"><span class="label">Alt A:</span><span class="val">Front-runner since round one. It showed.</span></div>
+  </div>
+
+  <div class="email-wrapper">
+
+    <div class="ch-hero">
+      <div class="ch-crown">&#128081;</div>
+      <div class="ch-eyebrow">Flavor Fight Club &middot; Champion</div>
+      <h1>Strawberry Kush Pop<br><span class="gld">Is Your Champion.</span></h1>
+      <p class="ch-line">THCP Lil Ripper Vape</p>
+    </div>
+
+    <div class="ch-margin">Won by a hair &middot; The Closest Final Of The Tournament</div>
+
+    <div class="ch-body">
+      <p class="ch-punch">69% in round one. The biggest margin of the tournament. And then this.</p>
+      <p>Strawberry Kush Pop was the favorite from the moment voting opened and it never once looked threatened. It beat the flavor most like itself. It beat everything else without breaking stride.</p>
+      <p>Then the final arrived and the whole thing came down to a handful of votes. Turns out being the favorite is the hardest way to win.</p>
+      <p class="ch-kicker">Led wire to wire. Nearly lost it at the tape. Champion anyway.</p>
+    </div>
+
+    <div class="ch-offer">
+      <div class="ch-offer-eyebrow">Because it earned it</div>
+      <h2>The Entire Vape<br><span class="gld">Collection Is 20% Off.</span></h2>
+      <p>Not just the winner. Every Lil Ripper we make. THCA, THCP, every flavor, every tank. Strawberry Kush Pop carried the category, so the category eats.</p>
+      <a href="#" class="cta-btn cta-gold-champ">SHOP ALL VAPES &mdash; 20% OFF</a>
+      <div class="ch-week">20% Off All Week &middot; Ends Sun Aug 30</div>
+    </div>
+
+    <div class="ch-thanks">
+      <p>Two weeks, four rounds, one genuine tie and a sudden death nobody saw coming. <strong>You picked all of it.</strong> We just counted.</p>
+    </div>
+
+    <div class="email-footer">
+      <div class="footer-brand">MUNCHIES!</div>
+      Delta Munchies &mdash; California Grown<br>
+      <a href="#">Unsubscribe</a> &nbsp;|&nbsp; <a href="#">Manage Preferences</a> &nbsp;|&nbsp; <a href="#">View in Browser</a>
+    </div>
+
+  </div>
+
+  <div class="impl-notes"><strong>Klaviyo:</strong> Send Sun Aug 23 &mdash; <strong>use only if Strawberry Kush Pop wins.</strong> Delete the other three variants before the send so the wrong one can't go out. <strong>Fill on send:</strong> the gold margin bar needs the real final percentages. Discount scoped to the <strong>entire Lil Ripper vape collection</strong>, not just the winning SKU, and runs the full week to Sun Aug 30. A THCP winner pairs naturally with the Aug 13 tolerance email and the Aug 17 Upgrade sale. Retarget openers of both; they already understand why THCP is different.</div>
+</div>
+</div>
+
+
+<div class="tab-panel" id="tab-champ-mango">
+<div class="flow-stage">
+  <div class="stage-badge">Champion &middot; VERSION 4</div>
+  <div class="stage-title">Champion &mdash; if Mango Gelato wins</div>
+  <div class="stage-meta">
+    <span style="color: #D4AF37;">Vape collection 20% off &middot; all week</span>
+    <span style="color: #888;">Send Aug 23 (Sun)</span>
+  </div>
+  <span class="type-tag champion">Champion</span>
+
+  <div class="email-header-bar">
+    <div class="row"><span class="label">Subject:</span><span class="val">It almost went out in round one. It just won the whole thing.</span></div>
+    <div class="row"><span class="label">Preview:</span><span class="val">Mango Gelato survived by two votes, then never lost again. Whole vape collection is 20% off.</span></div>
+    <div class="row"><span class="label">Alt A:</span><span class="val">The comeback nobody was tracking.</span></div>
+  </div>
+
+  <div class="email-wrapper">
+
+    <div class="ch-hero">
+      <div class="ch-crown">&#128081;</div>
+      <div class="ch-eyebrow">Flavor Fight Club &middot; Champion</div>
+      <h1>Mango Gelato<br><span class="gld">Is Your Champion.</span></h1>
+      <p class="ch-line">THCA Lil Ripper Vape</p>
+    </div>
+
+    <div class="ch-margin">Won by two votes &middot; The Closest Final Of The Tournament</div>
+
+    <div class="ch-body">
+      <p class="ch-punch">It survived round one by two points. Then it won everything.</p>
+      <p>Mango Gelato was ninety seconds from elimination in the first round. It got past Midnight Berry, our single most reordered product, by the thinnest margin in the bracket. Most people counted it out right there.</p>
+      <p>It won 61 to 39 in round two. Then it took the final by the same kind of margin it started with. Two votes in, two votes out.</p>
+      <p class="ch-kicker">Nearly gone in round one. Champion by round four.</p>
+    </div>
+
+    <div class="ch-offer">
+      <div class="ch-offer-eyebrow">Because it earned it</div>
+      <h2>The Entire Vape<br><span class="gld">Collection Is 20% Off.</span></h2>
+      <p>Not just the winner. Every Lil Ripper we make. THCA, THCP, every flavor, every tank. Mango Gelato went the distance, so the whole category goes on sale.</p>
+      <a href="#" class="cta-btn cta-gold-champ">SHOP ALL VAPES &mdash; 20% OFF</a>
+      <div class="ch-week">20% Off All Week &middot; Ends Sun Aug 30</div>
+    </div>
+
+    <div class="ch-thanks">
+      <p>Two weeks, four rounds, one genuine tie and a sudden death nobody saw coming. <strong>You picked all of it.</strong> We just counted.</p>
+    </div>
+
+    <div class="email-footer">
+      <div class="footer-brand">MUNCHIES!</div>
+      Delta Munchies &mdash; California Grown<br>
+      <a href="#">Unsubscribe</a> &nbsp;|&nbsp; <a href="#">Manage Preferences</a> &nbsp;|&nbsp; <a href="#">View in Browser</a>
+    </div>
+
+  </div>
+
+  <div class="impl-notes"><strong>Klaviyo:</strong> Send Sun Aug 23 &mdash; <strong>use only if Mango Gelato wins.</strong> Delete the other three variants before the send so the wrong one can't go out. <strong>Fill on send:</strong> the gold margin bar needs the real final percentages. Discount scoped to the <strong>entire Lil Ripper vape collection</strong>, not just the winning SKU, and runs the full week to Sun Aug 30. The Midnight Berry angle is worth reusing on social. A vape beating your top-selling gummy is a genuinely good story and it is all customer-generated.</div>
+</div>
+</div>
+
 
 
 <script>
