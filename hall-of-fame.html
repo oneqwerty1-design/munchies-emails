@@ -500,6 +500,12 @@
 .sep-close p{font-size:15px;color:#93a2b8;line-height:1.7;max-width:390px;margin:0 auto 28px}
 .sep-close-note{font-family:'Oswald',sans-serif;font-size:11px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:#6b7b91;margin-top:18px;line-height:1.8}
 @media (max-width:620px){.sep-hero{padding:44px 26px 40px}.sep-hero h1{font-size:36px}.sep-open{padding:36px 26px 34px}.sep-open p{font-size:15px}.sep-open .punch{font-size:18px}.sep-split{padding:34px 20px 36px}.sep-cols{flex-direction:column;gap:12px}.sep-fix{padding:36px 22px 34px}.sep-fix-head h2{font-size:23px}.sep-benefit{padding:18px 18px;gap:14px}.sep-ben-num{font-size:20px;width:26px}.sep-starter{padding:34px 22px 36px}.sep-starter-head h2{font-size:20px}.sep-starter-card{flex-direction:column;align-items:flex-start;gap:16px}.sep-starter-img{width:100%;height:150px}.sep-close{padding:40px 24px}.sep-close h2{font-size:23px}}
+.sep-math-tag{font-family:'Oswald',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#E8A33D;margin-bottom:9px}
+.sep-math p{margin-bottom:10px}
+.sep-math p:last-child{margin-bottom:0}
+.sep-math-kicker{font-size:13.5px !important;color:#8fa0b6 !important;font-style:italic}
+.sep-close-deadline{display:inline-block;background:rgba(232,163,61,0.14);border:1px solid rgba(232,163,61,0.4);border-radius:20px;padding:8px 18px;font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:#E8A33D;margin-top:20px}
+.sep-close-note{margin-top:12px !important}
 </style>
 </head>
 <body>
@@ -2419,7 +2425,7 @@
     <div class="row"><span class="label">Subject:</span><span class="val">September You is begging you to read this.</span></div>
     <div class="row"><span class="label">Preview:</span><span class="val">15% off, free shipping, and zero empty-stash panic.</span></div>
     <div class="row"><span class="label">Alt A:</span><span class="val">You in four days: frantic, out of stock, disappointed.</span></div>
-    <div class="row"><span class="label">Alt B:</span><span class="val">The 20% ends tomorrow. The 15% doesn't end.</span></div>
+    <div class="row"><span class="label">Alt B:</span><span class="val">Both discounts stack. Until tomorrow night.</span></div>
   </div>
 
   <div class="email-wrapper">
@@ -2428,7 +2434,7 @@
     <div class="sep-hero">
       <div class="sep-eyebrow">A Message From The Future</div>
       <h1>September You<br>Is Watching.</h1>
-      <p class="sep-sub">And they are not thrilled with the decisions being made this week.</p>
+      <p class="sep-sub">And they are not thrilled with the decisions being made this week. Fix it before Sunday and both discounts stack.</p>
       <a href="#" class="cta-btn cta-amber">SUBSCRIBE &amp; SAVE 15%</a>
     </div>
 
@@ -2512,7 +2518,7 @@
     <div class="sep-starter">
       <div class="sep-starter-head">
         <div class="sep-starter-tag">Suggested Starter</div>
-        <h2>Start With The One<br>You All Voted For.</h2>
+        <h2>Start With The Champion.<br>Stack Both Discounts.</h2>
       </div>
 
       <div class="sep-starter-card">
@@ -2520,13 +2526,15 @@
         <div class="sep-starter-info">
           <div class="sep-starter-crown">Flavor Fight Club Champion</div>
           <h3>Lil Ripper &mdash;<br>Watermelon Slushy</h3>
-          <p>It survived four rounds and thousands of votes to get here. Seems like a reasonable thing to have arrive automatically.</p>
+          <p>It survived four rounds and thousands of votes to get here. Seems like a reasonable thing to have arrive automatically, forever.</p>
           <a href="#">Subscribe To The Champion &rarr;</a>
         </div>
       </div>
 
       <div class="sep-math">
-        <p>The champion sale ends <strong>tomorrow night</strong> at 20% off. Subscribing gets you 15% off <strong>tomorrow, and every month after that.</strong> One of those numbers is bigger. The other one doesn't expire.</p>
+        <div class="sep-math-tag">Here's The Part That Matters</div>
+        <p>The 20% champion sale and your 15% subscriber discount <strong>stack.</strong> Subscribe before <strong>Sunday at midnight</strong> and both come off the same order.</p>
+        <p class="sep-math-kicker">Monday, it's 15% &mdash; which is still the lowest standing price we offer. But it will never be this low again.</p>
       </div>
     </div>
 
@@ -2534,7 +2542,8 @@
     <div class="sep-close">
       <h2>Do It Now.<br>You Have The Time.</h2>
       <p>That is the entire pitch. August You has a free afternoon and September You does not. Use it on something boring and useful.</p>
-      <a href="#" class="cta-btn cta-onslate">SUBSCRIBE &amp; SAVE 15%</a>
+      <a href="#" class="cta-btn cta-onslate">SUBSCRIBE &amp; STACK BOTH</a>
+      <div class="sep-close-deadline">Stacked Pricing Ends Sunday &middot; 11:59 PM</div>
       <div class="sep-close-note">Free Shipping &middot; Skip Anytime &middot; Cancel Anytime</div>
     </div>
 
@@ -2546,7 +2555,7 @@
 
   </div>
 
-  <div class="impl-notes"><strong>Klaviyo:</strong> Send Sat Aug 29. <strong>Suppress active subscribers</strong> &mdash; this whole email is an insult to someone who already subscribed. Segment to repeat purchasers first; the future-self frame only lands on people who have run out before. <strong>Verify the terms before send:</strong> the 15% / free shipping / skip-anytime copy is carried over from the existing Subscribe &amp; Save email, and I could not reach Shopify to confirm the live selling-plan discount. If the actual plan differs, this email is making a pricing promise you have to honour. <strong>The 20%-vs-15% block is the sharpest thing here and also the riskiest</strong> &mdash; it explicitly tells people the one-time sale is the better single purchase. That is true, and saying it is what makes the subscription pitch credible, but it will cannibalise some champion-sale conversions on the last day. If that trade isn't worth it, cut that block and keep the starter card. <strong>Timing:</strong> this lands on the second-to-last day of the champion sale, so anyone who clicks through sees 20% live on the same SKU &mdash; make sure the subscribe option is visible on the PDP and not buried under the sale price. Consider a Tue Sep 1 follow-up to openers who didn't convert, when September has actually started and the premise is no longer hypothetical.</div>
+  <div class="impl-notes"><strong>Klaviyo:</strong> Send Sat Aug 29. <strong>Suppress active subscribers</strong> &mdash; this whole email is an insult to someone who already subscribed. Segment to repeat purchasers first; the future-self frame only lands on people who have run out before. <strong>Verify the terms before send:</strong> the 15% / free shipping / skip-anytime copy is carried over from the existing Subscribe &amp; Save email, and I could not reach Shopify to confirm the live selling-plan discount. If the actual plan differs, this email is making a pricing promise you have to honour. <strong>The stack is the whole email &mdash; confirm it actually stacks in Shopify before send.</strong> Subscription selling-plan discounts and automatic order discounts do not always combine, and some setups block one when the other applies. Put a real test order through with the champion SKU on subscription and check the cart total. If it does not stack, this email is promising a price you cannot deliver and the starter block has to be rewritten. <strong>Drop the combined number in if the stack is additive</strong> (20 + 15 = 35% off) &mdash; "35% off the champion, then 15% forever" in the hero would outperform the current copy. If it compounds instead (0.80 &times; 0.85), the real figure is 32%, so do not round up. I left the exact number out because I could not reach Shopify to verify which applies. <strong>Timing:</strong> this now carries a genuine Sunday-midnight deadline, so a Sun 5pm "stack ends tonight" resend to non-openers is worth building. Consider a Tue Sep 1 follow-up to openers who didn't convert, when September has actually started and the premise is no longer hypothetical.</div>
 </div>
 </div>
 
