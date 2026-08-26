@@ -1,0 +1,215 @@
+<title>MUNCHIES Pillar Engine</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700&family=Oswald:wght@500;600&display=swap">
+<style>
+  :root{
+    --bg:#101014; --surface:#1a1a20; --surface2:#22222a; --line:#2e2e38;
+    --text:#efede6; --muted:#94919b;
+    --fg:#ff6b2c; --uw:#5ea8ff; --sl:#a78bfa; --so:#f0559b; --tr:#2fcb6f;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font:16px/1.65 Inter,system-ui,sans-serif;margin:0;padding:0}
+  .wrap{max-width:800px;margin:0 auto;padding:48px 24px 96px}
+  h1,h2,h3{font-family:'Archivo Black',Inter,sans-serif;font-weight:400;text-wrap:balance;line-height:1.15}
+  h1{font-size:clamp(2rem,6vw,3.2rem);margin:.2em 0 .3em;text-transform:uppercase}
+  h2{font-size:1.5rem;margin:0 0 .6em;text-transform:uppercase}
+  h3{font-size:1.05rem;margin:1.4em 0 .5em}
+  .eyebrow{font-family:Oswald,Inter,sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;color:var(--muted)}
+  .lede{color:var(--muted);max-width:60ch}
+  .masthead{border-bottom:1px solid var(--line);padding-bottom:28px;margin-bottom:8px}
+  .pillbar{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0}
+  .pill{font-family:Oswald,Inter,sans-serif;font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;padding:5px 12px;border-radius:3px;color:#101014;text-decoration:none}
+  section{margin-top:56px}
+  .kit{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:26px 26px 20px;margin-top:24px;border-top:4px solid var(--line)}
+  .kit .num{font-family:'Archivo Black',sans-serif;font-size:.9rem;opacity:.9}
+  .kit h3{margin-top:.2em;font-size:1.3rem;text-transform:uppercase}
+  .kit .tag{font-style:italic;color:var(--muted);margin:-6px 0 14px}
+  .row{display:grid;grid-template-columns:130px 1fr;gap:6px 18px;padding:9px 0;border-top:1px solid var(--line);font-size:.95rem}
+  .row b{font-family:Oswald,Inter,sans-serif;font-weight:600;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding-top:2px}
+  .row ul{margin:0;padding-left:18px}
+  .row li{margin:2px 0}
+  .quote{font-weight:600}
+  .flow{background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:20px 22px;overflow-x:auto;font-family:Oswald,Inter,sans-serif;font-size:.92rem;line-height:2;white-space:nowrap}
+  .flow .step{display:inline-block;padding:2px 10px;border-radius:3px;background:var(--surface);border:1px solid var(--line);margin:2px 2px}
+  .flow .arr{color:var(--muted);margin:0 4px}
+  .callout{border-left:4px solid var(--so);background:var(--surface);padding:16px 20px;border-radius:0 6px 6px 0;margin:18px 0}
+  .callout.trust{border-color:var(--tr)}
+  .callout.warn{border-color:#e0b13c}
+  table{border-collapse:collapse;width:100%;font-size:.92rem}
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;margin:14px 0}
+  th{font-family:Oswald,Inter,sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:.74rem;color:var(--muted);text-align:left;padding:10px 14px;background:var(--surface2)}
+  td{padding:10px 14px;border-top:1px solid var(--line);vertical-align:top}
+  ol.roll{counter-reset:n;list-style:none;padding:0;margin:16px 0 0}
+  ol.roll li{counter-increment:n;display:grid;grid-template-columns:44px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+  ol.roll li::before{content:counter(n,decimal-leading-zero);font-family:'Archivo Black',sans-serif;font-size:1.2rem;color:var(--muted)}
+  code{background:var(--surface2);border:1px solid var(--line);border-radius:3px;padding:1px 6px;font-size:.86em}
+  a{color:inherit}
+  .receipt{background:#f6f3ea;color:#1c1b18;font-family:ui-monospace,Consolas,monospace;font-size:.88rem;max-width:320px;padding:20px 22px;border-radius:4px;margin:16px 0;line-height:1.8}
+  .receipt .r{display:flex;justify-content:space-between;gap:16px}
+  .receipt .tot{border-top:2px dashed #1c1b18;margin-top:8px;padding-top:8px;font-weight:700}
+  .receipt .vs{text-align:center;font-weight:700;margin-top:12px;background:#2fcb6f;color:#0f130f;padding:4px;border-radius:3px}
+  @media(max-width:560px){.row{grid-template-columns:1fr}}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="eyebrow">Delta Munchies · Quarter Plan · Aug 2026</div>
+    <h1>The Pillar Engine</h1>
+    <p class="lede">One cohesive loop per pillar: ad → landing page → popup → Klaviyo segment → email flow → repeat purchase. Everything speaks the same lines, wears the same color, and lands on the same promise.</p>
+    <div class="pillbar">
+      <span class="pill" style="background:var(--fg)">01 Feel Good</span>
+      <span class="pill" style="background:var(--uw)">02 Unwind</span>
+      <span class="pill" style="background:var(--sl)">03 Sleep</span>
+      <span class="pill" style="background:var(--so)">04 Social</span>
+      <span class="pill" style="background:var(--tr)">05 Trust</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="eyebrow">§1</div>
+    <h2>The Loop</h2>
+    <div class="flow">
+      <span class="step">Pillar ad</span><span class="arr">→</span><span class="step">Pillar LP (age-gated)</span><span class="arr">→</span><span class="step">PDP</span><span class="arr">→</span><span class="step">Popup: “what are you here for?”</span><span class="arr">→</span><br>
+      <span class="step">Klaviyo <code>pillar_interest</code></span><span class="arr">→</span><span class="step">Pillar welcome branch</span><span class="arr">→</span><span class="step">Cross-pillar ladder</span><span class="arr">→</span><span class="step">Repeat</span>
+    </div>
+    <div class="row"><b>One vocabulary</b><div>The doc's “how it feels” lines are the pain copy; “how we answer” lines are the promise copy. Ads tease it, LPs agitate it, emails continue it. No channel invents parallel language.</div></div>
+    <div class="row"><b>Color = pillar</b><div>Fixed accent per pillar across ad, LP skin, and email header. Subconscious continuity from feed to inbox.</div></div>
+    <div class="row"><b>Trust = the floor</b><div>Trust isn't a fifth silo — its block (dosing, onset timeline, COA, reviews) ships on every pillar LP and in every welcome flow.</div></div>
+    <div class="row"><b>Traffic law</b><div>Paid lands on age-gated trymunchies.com pillar LPs. deltamunchies.com gets sister pages for email + SEO. Same content, two skins.</div></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">§2</div>
+    <h2>Pillar Kits</h2>
+
+    <div class="kit" style="border-top-color:var(--fg)">
+      <div class="num" style="color:var(--fg)">01</div>
+      <h3>Feel Good</h3>
+      <p class="tag">Not sad — just life can be better. They want: feeling good for no reason.</p>
+      <div class="row"><b>Product</b><div>Euphoria D9 (hero). FEELGOOD ad set already live → retro-link to LP once built. Microdose <b>Big Brain</b> (focus) parked as candidate daytime pillar — not Q3 scope.</div></div>
+      <div class="row"><b>LP</b><div><code>/pages/feel-good</code> — “Rent-Cancelled Energy”</div></div>
+      <div class="row"><b>Hooks</b><div class="quote">Floating thru life like rent got cancelled · Tuesday felt like a Friday for no reason · The group chat can wait, everything can wait</div></div>
+      <div class="row"><b>Pain copy</b><div>Sunday 4pm — weekend's over and it never started · Favorite show's on. Scrolling through it. · “Fine, I guess.”</div></div>
+      <div class="row"><b>Subjects</b><div>“Tuesday, but make it Friday” · “rent-cancelled vibes, $0 down” · “the Sunday 4pm cure” · “everything can wait”</div></div>
+    </div>
+
+    <div class="kit" style="border-top-color:var(--uw)">
+      <div class="num" style="color:var(--uw)">02</div>
+      <h3>Unwind</h3>
+      <p class="tag">Can't turn the day off. They want: the off-switch.</p>
+      <div class="row"><b>Product</b><div><b>Microdose Chillin</b> — the literal weeknight dose ($11.99 five-piece entry, subscriptions live) + Euphoria core for heavier nights. UNWIND ad set live → retro-link.</div></div>
+      <div class="row"><b>LP</b><div><code>/pages/unwind</code> — “The Off-Switch”</div></div>
+      <div class="row"><b>Hooks</b><div class="quote">The workday ends when you say it does · 5pm hits different when it actually hits · Couch, show, gone — in that order</div></div>
+      <div class="row"><b>Pain copy</b><div>Laptop's closed. Brain's still in the meeting. · 9pm — first free hour all day, spent wired · One more episode, one more scroll. Still not relaxed.</div></div>
+      <div class="row"><b>Subjects</b><div>“clock out. for real this time” · “your 9pm deserves better” · “laptop closed ≠ brain closed” · “couch, show, gone”</div></div>
+    </div>
+
+    <div class="kit" style="border-top-color:var(--sl)">
+      <div class="num" style="color:var(--sl)">03</div>
+      <h3>Sleep</h3>
+      <p class="tag">Tired but can't sleep. They want: actually falling asleep.</p>
+      <div class="row"><b>Product</b><div><b>Midnight Berry Euphoria</b> — dedicated SKU, cleanest ad→LP→PDP story of all five.</div></div>
+      <div class="row"><b>LP</b><div><code>/pages/midnight</code> — “Midnight Berry: Lights Out”</div></div>
+      <div class="row"><b>Hooks</b><div class="quote">Your brain finally shuts up at 10pm · Bedtime stopped being a negotiation · Tomorrow's problems can't find you</div></div>
+      <div class="row"><b>Pain copy</b><div>Lights out at 11. Ceiling till 1. · Replaying a conversation from three years ago · Alarm's in 6 hours. Doing that math makes it worse.</div></div>
+      <div class="row"><b>Subjects</b><div>“your brain, but quieter” · “ceiling inspection: cancelled” · “tomorrow can't find you” · “the 10pm mute button”</div></div>
+      <div class="callout warn"><b>Strictest compliance lane.</b> Nighttime-ritual framing only. Never “sleep aid,” “treats insomnia,” or “fall asleep faster” in ads — the doc's poetic lines are the compliant way to say it. Use them verbatim.</div>
+    </div>
+
+    <div class="kit" style="border-top-color:var(--so)">
+      <div class="num" style="color:var(--so)">04</div>
+      <h3>Social</h3>
+      <p class="tag">Fun tonight without paying tomorrow. They want: two drinks that stay two drinks. Anti-alcohol economics lane.</p>
+      <div class="row"><b>Product</b><div><b>Microdose Chillin + Love</b> — “two drinks that stay two drinks” is literally the microdose promise; Love = date-night sub-lane. Euphoria core for pregame. Only pillar with zero live ads — greenfield.</div></div>
+      <div class="row"><b>LP</b><div><code>/pages/night-out</code> — “The Night Out That Doesn't Send an Invoice”</div></div>
+      <div class="row"><b>Hooks</b><div class="quote">All the fun of round three, without round three · Wake up Saturday with your Saturday intact · The night out that doesn't send an invoice</div></div>
+      <div class="row"><b>Subjects</b><div>“your night out sent an invoice” · “round 3, without round 3” · “$131 vs $3 (receipts attached)” · “the hangover tax is optional”</div></div>
+      <div class="row"><b>Signature</b><div>The <b>Night-Out Receipt</b> — interactive calculator on the LP, static version as ad + email creative. Screenshot-bait:</div></div>
+      <div class="receipt">
+        <div class="r"><span>UBER THERE</span><span>$18</span></div>
+        <div class="r"><span>COVER</span><span>$20</span></div>
+        <div class="r"><span>DRINKS ×6</span><span>$54</span></div>
+        <div class="r"><span>UBER BACK (SURGE)</span><span>$24</span></div>
+        <div class="r"><span>2AM FOOD</span><span>$15</span></div>
+        <div class="r"><span>SATURDAY</span><span>GONE</span></div>
+        <div class="r tot"><span>TOTAL</span><span>$131 + hangover</span></div>
+        <div class="vs">EUPHORIA GUMMY: ~$3. SATURDAY INTACT.</div>
+      </div>
+      <div class="callout warn">Money + morning-after math only. Never “healthier than alcohol” — that's a health claim.</div>
+    </div>
+
+    <div class="kit" style="border-top-color:var(--tr)">
+      <div class="num" style="color:var(--tr)">05</div>
+      <h3>Trust</h3>
+      <p class="tag">Scared of the gummy gamble. They want: know exactly what you're getting.</p>
+      <div class="row"><b>Role</b><div>Conversion floor on all pillars + dedicated lane for first-timers and hesitator retargeting.</div></div>
+      <div class="row"><b>Trial SKU</b><div><b>Microdose 5-piece @ $11.99</b> — “precision calibrated” is the anti-roulette product. Trust LP hero offer + welcome E4 first-timer offer; subscription upsell post-purchase.</div></div>
+      <div class="row"><b>LP</b><div><code>/pages/first-timers</code> — “No More Gummy Roulette”</div></div>
+      <div class="row"><b>Trust block</b><div>Ships on every LP + welcome E3: dosing guide (“start with half”) · 30/60/90-min onset timeline graphic · lab-tested + COA link · pillar-filtered reviews · “same thing every time.”</div></div>
+      <div class="row"><b>Hooks</b><div class="quote">Remember your worst gummy night? That doesn't happen here · No math, no guessing — same thing every time</div></div>
+      <div class="row"><b>Pain copy</b><div>45 minutes in. Nothing. Take another? · Two hours later — way, way too much · Googling “how long does an edible last” at 11pm</div></div>
+      <div class="row"><b>Subjects</b><div>“no more gummy roulette” · “know exactly how it hits” · “the same every time. that's the point.” · “45 minutes in. nothing. (never again)”</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">§3</div>
+    <h2>Segmentation</h2>
+    <h3>The popup — question first, email second</h3>
+    <p><b>Step 1 (before asking for anything):</b> “What are you here for?” — <i>Feeling good for no reason · The off-switch · Actually sleeping · Fun without the hangover · Just looking 👀</i>. The answer is worth as much as the email. <b>Step 2:</b> email + pillar-matched incentive (Sleep gets “first-night guide + 15% off Midnight Berry,” not generic 10%). Trigger: 2nd pageview or 15s + exit intent. Writes <code>pillar_interest</code> + <code>pillar_selected_at</code> to Klaviyo.</p>
+    <h3>Enrichment that keeps working</h3>
+    <div class="row"><b>Purchase</b><div>Bought Midnight Berry → <code>pillar_interest = sleep</code>. Purchase beats stated intent.</div></div>
+    <div class="row"><b>Clicks</b><div>2+ clicks on pillar-tagged links in 30d → update property (powered by UTM standard, §4).</div></div>
+    <div class="row"><b>Reviews</b><div>Review request asks “what'd you use it for?” (same five options) → feeds segmentation AND builds pillar-filtered review content for LPs. Compounding asset.</div></div>
+    <div class="row"><b>Re-poll</b><div>90 days later: one-question “still here for X?” email — doubles as re-engagement.</div></div>
+    <h3>Flow tree</h3>
+    <div class="tablewrap"><table>
+      <tr><th>Flow</th><th>Pillar treatment</th></tr>
+      <tr><td><b>Welcome</b> (5-branch split)</td><td>E1 pain story (pure doc copy) → E2 product match + LP → E3 trust block → E4 pillar-coded offer. “Just looking” branch tours all five; first click assigns the property.</td></tr>
+      <tr><td><b>Cart / browse abandon</b></td><td>Same email, five skins — opener swaps to the pillar's pain line when property exists.</td></tr>
+      <tr><td><b>Post-purchase ladder</b></td><td>Cross-pillar next step: Feel Good→Social · Unwind→Sleep · Sleep→Unwind · Social→Feel Good. “You've got your off-switch. Meet Saturday's plan.”</td></tr>
+      <tr><td><b>Winback</b></td><td>Lead with their pillar's pain (“Still staring at the ceiling?”), never “we miss you.”</td></tr>
+      <tr><td><b>Campaigns</b></td><td>Weekly rotating pillar spotlight: matching segment gets the deep cut, everyone else the broad cut. One calendar, segmented delivery.</td></tr>
+    </table></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">§4</div>
+    <h2>CRO Catalog</h2>
+    <ol class="roll">
+      <li><div><b>Shared LP skeleton, five skins.</b> Hero hook → “sounds familiar?” (3 pain lines verbatim) → promise → product + dose clarity → trust block → pillar reviews → offer → FAQ → sticky ATC. Build once.</div></li>
+      <li><div><b>Night-Out Receipt calculator</b> — the differentiation swing. Interactive on LP, static as creative.</div></li>
+      <li><div><b>Onset timeline graphic</b> — 30/60/90 min. Reused on every PDP, LP, and welcome E3.</div></li>
+      <li><div><b>Homepage vibe tiles</b> — five tiles echoing the popup question. Homepage becomes a router.</div></li>
+      <li><div><b>PDP pillar badges + “also good for →” cross-nav.</b></div></li>
+      <li><div><b>Pillar bundles</b> — Off-Switch Kit, Lights-Out Kit, Pregame Pack, plus the <b>Microdose Starter Flight</b> (Big Brain + Chillin + Love five-pieces, ~$29): trust play + functional-line discovery in one SKU.</div></li>
+      <li><div><b>Subscription hook per pillar</b> — microdose selling plans exist; pitch subscriptions in pillar language (“the off-switch, on autopilot”), never generic subscribe-&amp;-save.</div></li>
+      <li><div><b>Quiz v2</b> — 3 questions → product + dose; results page is a mini pillar LP.</div></li>
+      <li><div><b>Pillar exit-intent</b> — leaving Sleep LP offers the first-night guide, not generic 10%.</div></li>
+      <li><div><b>Pillar-tagged review capture</b> — every LP's proof gets more on-pillar over time.</div></li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="eyebrow">§5</div>
+    <h2>Attribution + Standards</h2>
+    <div class="row"><b>UTMs</b><div>Match live-ad convention (Shopify Customer Journey + Meta only). Pillar always in <code>utm_campaign</code>: <code>{pillar}-{concept}-{date}</code>. Email: <code>utm_source=klaviyo&utm_medium=email&utm_campaign={pillar}-{flow}</code>. This powers click-based enrichment.</div></div>
+    <div class="row"><b>Codes</b><div>Pillar discounts as backup attribution: FEELGOOD15 · UNWIND15 · MIDNIGHT15 · NIGHTOUT15 · FIRSTTIME15. Auto-apply: <code>/discount/CODE?redirect=/pages/{lp}</code>.</div></div>
+    <div class="row"><b>Ad naming</b><div><code>MMDD | {PILLAR} | BROAD | EXC-CA-180D</code> · ads <code>{PILLAR} | {FORMAT} | {HOOK}</code>.</div></div>
+    <div class="row"><b>KPIs</b><div>LP CVR · popup pillar distribution (= demand signal for what to feed next) · flow revenue per branch · code redemptions.</div></div>
+    <div class="callout trust"><b>Compliance floor, all pillars:</b> no medical claims, no intoxication language in paid copy, money-math only for anti-alcohol, paid traffic to age-gated LPs only, 21+ everywhere, no copy reuse across other brands.</div>
+  </section>
+
+  <section>
+    <div class="eyebrow">§6</div>
+    <h2>Rollout Order</h2>
+    <ol class="roll">
+      <li><div><b>Popup + <code>pillar_interest</code> + 5-branch welcome.</b> Segments ALL existing traffic immediately, zero new pages. ~1 week.</div></li>
+      <li><div><b>Social LP + Receipt calculator + NIGHTOUT ads.</b> Only pillar with no live ads; most differentiated angle.</div></li>
+      <li><div><b>Sleep LP + Midnight Berry ad set.</b> Cleanest product-pillar story.</div></li>
+      <li><div><b>Retro-link live FEELGOOD + UNWIND ad sets</b> to their new LPs (currently → Euphoria PDP).</div></li>
+      <li><div><b>Homepage tiles + PDP badges</b> — site-wide cohesion pass.</div></li>
+      <li><div><b>Bundles, quiz, exit-intent variants</b> — optimization layer once data flows.</div></li>
+    </ol>
+    <p class="lede" style="margin-top:24px">Prepare + park: flows and campaigns built as drafts, ads built paused — nothing goes live without sign-off.</p>
+  </section>
+</div>
