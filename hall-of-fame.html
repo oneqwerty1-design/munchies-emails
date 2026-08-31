@@ -506,6 +506,38 @@
 .sep-math-kicker{font-size:13.5px !important;color:#8fa0b6 !important;font-style:italic}
 .sep-close-deadline{display:inline-block;background:rgba(232,163,61,0.14);border:1px solid rgba(232,163,61,0.4);border-radius:20px;padding:8px 18px;font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:#E8A33D;margin-top:20px}
 .sep-close-note{margin-top:12px !important}
+.type-tag.earlyaccess{background:#E5C687;color:#1A0F1D}
+.tab-btn[data-tab="labor-early"].active{background:rgba(229,198,135,0.16);border-color:#E5C687}
+.tab-btn[data-tab="labor-early"].active .tab-offer{color:#E5C687}
+.ea-bar{background:#E5C687;padding:11px 20px;text-align:center;font-family:'Oswald',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:#1A0F1D}
+.ea-hero{background:#120A14;padding:56px 40px 52px;text-align:center;position:relative;overflow:hidden}
+.ea-hero::after{content:'';position:absolute;top:-160px;left:50%;transform:translateX(-50%);width:520px;height:520px;background:radial-gradient(circle,rgba(229,198,135,0.13) 0%,transparent 62%);pointer-events:none}
+.ea-eyebrow{font-family:'Oswald',sans-serif;font-size:11px;font-weight:600;letter-spacing:4.5px;text-transform:uppercase;color:#E5C687;margin-bottom:26px;position:relative;z-index:2}
+.ea-big{font-family:'Archivo Black',sans-serif;font-size:112px;color:#fff;line-height:0.82;letter-spacing:-6px;position:relative;z-index:2;text-shadow:0 6px 40px rgba(229,198,135,0.18)}
+.ea-big .pct{font-size:56px;letter-spacing:-2px;color:#E5C687;vertical-align:super}
+.ea-off{font-family:'Archivo Black',sans-serif;font-size:34px;color:#fff;letter-spacing:-1.4px;text-transform:uppercase;line-height:1;margin-top:6px;position:relative;z-index:2}
+.ea-forwhat{font-family:'Oswald',sans-serif;font-size:14px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#9d8ba5;margin-top:18px;position:relative;z-index:2}
+.ea-rule{width:44px;height:2px;background:#E5C687;margin:26px auto 0;position:relative;z-index:2}
+.ea-math{background:#1A0F1D;padding:40px 36px 42px}
+.ea-math-head{text-align:center;font-family:'Oswald',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:#7d6a86;margin-bottom:24px}
+.ea-layer{display:flex;align-items:center;gap:18px;padding:18px 20px;border-radius:12px;margin-bottom:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09)}
+.ea-layer-num{font-family:'Archivo Black',sans-serif;font-size:30px;line-height:1;color:#E5C687;flex-shrink:0;width:74px;letter-spacing:-1.5px}
+.ea-layer-txt h4{font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:#fff;margin-bottom:4px}
+.ea-layer-txt p{font-size:13px;color:#9d8ba5;line-height:1.55}
+.ea-then{text-align:center;font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#5f4f68;margin:2px 0 10px}
+.ea-total{background:#E5C687;border-radius:12px;padding:20px 22px;display:flex;align-items:center;gap:18px;margin-top:6px}
+.ea-total-num{font-family:'Archivo Black',sans-serif;font-size:34px;line-height:1;color:#1A0F1D;flex-shrink:0;width:74px;letter-spacing:-1.8px}
+.ea-total-txt h4{font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:#1A0F1D;margin-bottom:3px}
+.ea-total-txt p{font-size:13px;color:rgba(26,15,29,0.7);line-height:1.5}
+.ea-cta{background:#120A14;padding:44px 40px 46px;text-align:center}
+.ea-cta h2{font-family:'Archivo Black',sans-serif;font-size:24px;color:#fff;text-transform:uppercase;line-height:1.15;letter-spacing:-0.8px;margin-bottom:22px}
+.cta-champagne{background:#E5C687;color:#1A0F1D;border:2px solid #E5C687}
+.cta-champagne:hover{background:#F0D9A8;border-color:#F0D9A8}
+.ea-deadline{font-family:'Oswald',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#7d6a86;margin-top:18px}
+.ea-everyone{background:#0A060B;padding:28px 40px;text-align:center;border-top:1px solid rgba(229,198,135,0.16)}
+.ea-everyone p{font-size:14px;color:#6e5f76;line-height:1.7;max-width:400px;margin:0 auto}
+.ea-everyone strong{color:#E5C687;font-weight:700}
+@media (max-width:620px){.ea-hero{padding:44px 24px 40px}.ea-big{font-size:78px;letter-spacing:-4px}.ea-big .pct{font-size:38px}.ea-off{font-size:25px}.ea-forwhat{font-size:12px;letter-spacing:1.8px}.ea-math{padding:32px 20px 34px}.ea-layer{padding:16px 16px;gap:12px}.ea-layer-num{font-size:24px;width:56px}.ea-total{padding:18px 16px;gap:12px}.ea-total-num{font-size:27px;width:56px}.ea-cta{padding:36px 24px 38px}.ea-cta h2{font-size:20px}.ea-everyone{padding:24px 24px}}
 </style>
 </head>
 <body>
@@ -618,6 +650,11 @@
       <span class="tab-stage">Aug 29 &middot; Sat</span>
       <span class="tab-name">September You &mdash; Subscribe &amp; Save</span>
       <span class="tab-offer">15% every order</span>
+    </div>
+    <div class="tab-btn" data-tab="labor-early" onclick="switchTab('labor-early')">
+      <span class="tab-stage">Sep 3 &middot; Thu</span>
+      <span class="tab-name">Labor Day Early Access</span>
+      <span class="tab-offer">36% off first sub</span>
     </div>
   </div>
   <div class="tab-bar-divider"></div>
@@ -2557,6 +2594,92 @@
   </div>
 
   <div class="impl-notes"><strong>Klaviyo:</strong> Send Sat Aug 29. <strong>Suppress active subscribers</strong> &mdash; this whole email is an insult to someone who already subscribed. Segment to repeat purchasers first; the future-self frame only lands on people who have run out before. <strong>Verify the terms before send:</strong> the 15% / free shipping / skip-anytime copy is carried over from the existing Subscribe &amp; Save email, and I could not reach Shopify to confirm the live selling-plan discount. If the actual plan differs, this email is making a pricing promise you have to honour. <strong>The stack is the whole email &mdash; confirm it actually stacks in Shopify before send.</strong> Subscription selling-plan discounts and automatic order discounts do not always combine, and some setups block one when the other applies. Put a real test order through with the champion SKU on subscription and check the cart total. If it does not stack, this email is promising a price you cannot deliver and the starter block has to be rewritten. <strong>Drop the combined number in if the stack is additive</strong> (20 + 15 = 35% off) &mdash; "35% off the champion, then 15% forever" in the hero would outperform the current copy. If it compounds instead (0.80 &times; 0.85), the real figure is 32%, so do not round up. I left the exact number out because I could not reach Shopify to verify which applies. <strong>Timing:</strong> this now carries a genuine Sunday-midnight deadline, so a Sun 5pm "stack ends tonight" resend to non-openers is worth building. Consider a Tue Sep 1 follow-up to openers who didn't convert, when September has actually started and the premise is no longer hypothetical.</div>
+</div>
+</div>
+
+
+<div class="tab-panel" id="tab-labor-early">
+<div class="flow-stage">
+  <div class="stage-badge">Early Access</div>
+  <div class="stage-title">Labor Day Early Access &mdash; "You Go First"</div>
+  <div class="stage-meta">
+    <span style="color: #E5C687;">36% off first subscription</span>
+    <span style="color: #888;">Send Thu Sep 3 &middot; before public sale</span>
+  </div>
+  <span class="type-tag earlyaccess">Early Access</span>
+
+  <div class="email-header-bar">
+    <div class="row"><span class="label">Subject:</span><span class="val">You get this two days before everyone else.</span></div>
+    <div class="row"><span class="label">Preview:</span><span class="val">36% off your first subscription. The public gets 20% on Monday.</span></div>
+    <div class="row"><span class="label">Alt A:</span><span class="val">Early access: 36% off. Yes, thirty-six.</span></div>
+    <div class="row"><span class="label">Alt B:</span><span class="val">Being on this list just paid for itself.</span></div>
+  </div>
+
+  <div class="email-wrapper">
+
+    <div class="ea-bar">Early Access &middot; Subscribers Only</div>
+
+    <!-- HERO -->
+    <div class="ea-hero">
+      <div class="ea-eyebrow">You're On The List. You Go First.</div>
+      <div class="ea-big">36<span class="pct">%</span></div>
+      <div class="ea-off">Off</div>
+      <div class="ea-forwhat">Your First Subscription Order</div>
+      <div class="ea-rule"></div>
+    </div>
+
+    <!-- THE MATH -->
+    <div class="ea-math">
+      <div class="ea-math-head">How It Gets There</div>
+
+      <div class="ea-layer">
+        <div class="ea-layer-num">15%</div>
+        <div class="ea-layer-txt">
+          <h4>Subscriber Savings</h4>
+          <p>What every subscription order costs. Always on.</p>
+        </div>
+      </div>
+
+      <div class="ea-then">Then</div>
+
+      <div class="ea-layer">
+        <div class="ea-layer-num">25%</div>
+        <div class="ea-layer-txt">
+          <h4>Early Access Code</h4>
+          <p>Stacked on top of that. Yours because you're on this list.</p>
+        </div>
+      </div>
+
+      <div class="ea-total">
+        <div class="ea-total-num">36%</div>
+        <div class="ea-total-txt">
+          <h4>Off Retail</h4>
+          <p>The lowest price we have ever put on a subscription.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="ea-cta">
+      <h2>Two Days Early.<br>Because You Asked For The Emails.</h2>
+      <a href="#" class="cta-btn cta-champagne">CLAIM 36% OFF</a>
+      <div class="ea-deadline">Early Access Closes Fri Sep 4 &middot; 11:59 PM</div>
+    </div>
+
+    <!-- EVERYONE ELSE -->
+    <div class="ea-everyone">
+      <p>Monday, everyone else gets <strong>20% off</strong> and calls it a good Labor Day sale. They're not wrong. They're just late.</p>
+    </div>
+
+    <div class="email-footer">
+      <div class="footer-brand">MUNCHIES!</div>
+      Delta Munchies &mdash; California Grown<br>
+      <a href="#">Unsubscribe</a> &nbsp;|&nbsp; <a href="#">Manage Preferences</a> &nbsp;|&nbsp; <a href="#">View in Browser</a>
+    </div>
+
+  </div>
+
+  <div class="impl-notes"><strong>The math is compounding, not addition &mdash; keep it that way.</strong> 25% off a price already 15% off is 0.75 &times; 0.85 = a 36.25% total discount, shown here as 36% because rounding down is the only safe direction. <strong>Never render this as "25% + 15%" with a plus sign</strong>, because that reads as 40% and you will get emails about it. The stepped 15% &rarr; then 25% &rarr; 36% layout exists specifically to make the stacking legible without ever writing an equation that doesn't add up.<br><br><strong>Klaviyo:</strong> Send Thu Sep 3, early access window closing Fri Sep 4 at midnight so there is real separation before the public sale. <strong>Suppress active subscribers</strong> &mdash; this is a first-subscription offer and it will read as an insult to anyone already paying full subscription price. Consider a parallel loyalty gesture for them the same day rather than silence. <strong>Dates and window are my assumption</strong> (Labor Day is Mon Sep 7); confirm before build. <strong>Verify the stack in Shopify before send</strong> &mdash; the early access code has to actually apply on top of the selling-plan discount, and some setups block that. Put a test order through.<br><br><strong>This confirms the September You number:</strong> if discounts compound here, the 20% champion sale stacked with the 15% subscription is 0.80 &times; 0.85 = <strong>32% off, not 35%</strong>. Worth updating that email if you add the figure.<br><br><strong>Deliberately short.</strong> No product grid, no benefits list, no lifestyle copy &mdash; the number is the entire message and anything else added here dilutes it. If you want products in the send, put them on the landing page instead.</div>
 </div>
 </div>
 
